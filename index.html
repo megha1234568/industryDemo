@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Industry Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #e0173d;
+      --dark: #0f1117;
+      --mid: #3b3f4c;
+      --light: #f5f6f8;
+      --border: #e2e5ec;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 24px rgba(0,0,0,0.07);
+      --hover-shadow: 0 12px 40px rgba(0,0,0,0.13);
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    /* Full-height flex column */
+    .layout {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* STICKY HERO */
+    .hero {
+      flex-shrink: 0;
+      text-align: center;
+      padding: 36px 24px 28px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(224,23,61,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pill {
+      display: inline-block;
+      background: rgba(224,23,61,0.08);
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(224,23,61,0.18);
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3.2vw, 42px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--dark);
+    }
+    .hero h1 span { color: var(--red); }
+    .hero p {
+      max-width: 520px;
+      margin: 10px auto 0;
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* SCROLLABLE AREA */
+    .scroll-area {
+      flex: 1 1 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--red) #ebebeb;
+    }
+    .scroll-area::-webkit-scrollbar { width: 7px; }
+    .scroll-area::-webkit-scrollbar-track { background: #ebebeb; border-radius: 10px; }
+    .scroll-area::-webkit-scrollbar-thumb { background: var(--red); border-radius: 10px; }
+    .scroll-area::-webkit-scrollbar-thumb:hover { background: #c0122f; }
+
+    /* GRID */
+    .grid-section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 24px 36px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 20px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(224,23,61,0.03), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); border-color: rgba(224,23,61,0.3); }
+    .card:hover::after { opacity: 1; }
+
+    .icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .card h3 { font-size: 15.5px; font-weight: 600; color: var(--dark); }
+    .card p  { font-size: 12.5px; color: #6b7280; line-height: 1.55; flex: 1; font-weight: 300; }
+    .cta     { font-size: 12.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.2s; }
+    .card:hover .cta { gap: 9px; }
+
+    /* STICKY FOOTER */
+    footer {
+      flex-shrink: 0;
+      text-align: center;
+      padding: 16px 24px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: #9ca3af;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.04);
+      z-index: 10;
+    }
+    footer .dot { color: var(--red); font-size: 16px; vertical-align: middle; }
+    footer strong { color: var(--mid); }
+    footer small { display: inline; margin-left: 10px; font-size: 12px; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero { animation: fadeUp 0.5s ease both; }
+    .card { animation: fadeUp 0.45s ease both; }
+    .card:nth-child(1){animation-delay:0.05s}
+    .card:nth-child(2){animation-delay:0.10s}
+    .card:nth-child(3){animation-delay:0.15s}
+    .card:nth-child(4){animation-delay:0.20s}
+    .card:nth-child(5){animation-delay:0.25s}
+    .card:nth-child(6){animation-delay:0.30s}
+    .card:nth-child(7){animation-delay:0.35s}
+    .card:nth-child(8){animation-delay:0.40s}
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- STICKY HEADER -->
+  <section class="hero">
+    <div class="pill">Industry Solutions</div>
+    <h1>Transforming Industries with<br><span>Intelligent Solutions</span></h1>
+    <p>Discover innovative digital solutions tailored for 8 key industries. Driving efficiency, productivity, and growth through cutting-edge technology.</p>
+  </section>
+
+  <!-- SCROLLABLE GRID -->
+  <div class="scroll-area">
+    <div class="grid-section">
+      <div class="grid">
+
+        <a class="card" href="life.html">
+          <div class="icon-wrap" style="background:#fce7ed;">🔬</div>
+          <h3>Life Sciences</h3>
+          <p>Innovative solutions for pharmaceutical and biotech industries</p>
+          <span class="cta" style="color:#e0173d;">Explore Solutions →</span>
+        </a>
+
+        <a class="card" href="cpg.html">
+          <div class="icon-wrap" style="background:#fff3e0;">🛒</div>
+          <h3>CPG</h3>
+          <p>Consumer packaged goods solutions for modern retail</p>
+          <span class="cta" style="color:#f59e0b;">Explore Solutions →</span>
+        </a>
+
+        <a class="card" href="oil.html">
+          <div class="icon-wrap" style="background:#e8f4fd;">💧</div>
+          <h3>Oil & Gas</h3>
+          <p>Advanced technology for energy sector operations</p>
+          <span class="cta" style="color:#3b82f6;">Explore Solutions →</span>
+        </a>
+
+        <a class="card" href="chemical.html">
+          <div class="icon-wrap" style="background:#e8faf0;">🧪</div>
+          <h3>Chemical</h3>
+          <p>Digital solutions for chemical manufacturing excellence</p>
+          <span class="cta" style="color:#10b981;">Explore Solutions →</span>
+        </a>
+
+        <a class="card" href="metal.html">
+          <div class="icon-wrap" style="background:#fce7ed;">⛰️</div>
+          <h3>Metal & Mining</h3>
+          <p>Smart mining solutions for sustainable operations</p>
+          <span class="cta" style="color:#e0173d;">Explore Solutions →</span>
+        </a>
+
+        <a class="card" href="infra.html">
+          <div class="icon-wrap" style="background:#e0f2fe;">🏗️</div>
+          <h3>Infrastructure</h3>
+          <p>Building the future with smart infrastructure solutions</p>
+          <span class="cta" style="color:#0ea5e9;">Explore Solutions →</span>
+        </a>
+
+        <a class="card" href="auto.html">
+          <div class="icon-wrap" style="background:#fce7ed;">🚗</div>
+          <h3>Automotive & Tire</h3>
+          <p>Driving innovation in mobility and manufacturing</p>
+          <span class="cta" style="color:#e0173d;">Explore Solutions →</span>
+        </a>
+
+        <a class="card" href="cement.html">
+          <div class="icon-wrap" style="background:#fef9e7;">📦</div>
+          <h3>Cement</h3>
+          <p>Modernizing cement production and distribution</p>
+          <span class="cta" style="color:#f59e0b;">Explore Solutions →</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY FOOTER -->
+  <footer>
+    <span class="dot">●</span> <strong>Powered by Innovation</strong>
+    <small>Delivering excellence across industries worldwide</small>
+  </footer>
+
+</div>
+
+</body>
+</html>

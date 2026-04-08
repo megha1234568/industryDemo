@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPG Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0ea5e9;
+    --primary-dark: #0ea5e9;
+    --primary-light: #e0f2fe;
+    --accent: #0ea5e9;
+    --bg: #f0f7ff;
+    --bg-card: #ffffff;
+    --text-dark: #0f172a;
+    --text-mid: #475569;
+    --text-light: #94a3b8;
+    --border: #e2eaf4;
+    --green: #22c55e;
+    --shadow-sm: 0 2px 8px rgba(14,165,233,0.08);
+    --shadow-md: 0 8px 32px rgba(14,165,233,0.13);
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* TOP NAV */
+  .topbar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    gap: 8px;
+  }
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-mid);
+    text-decoration: none;
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .back-btn:hover { color: var(--primary); }
+  .back-btn svg { width: 16px; height: 16px; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #e8f4fe 0%, #d0eaf9 50%, #e8f4fe 100%);
+    padding: 44px 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,165,233,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+  }
+  .badge-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: inline-block;
+  }
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+  }
+  .hero p {
+    font-size: 15px;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+  }
+  .hero-features {
+    display: flex;
+    gap: 40px;
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .feature-icon {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(14,165,233,0.10);
+    border: 1px solid rgba(14,165,233,0.18);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .feature-icon svg { width: 18px; height: 18px; }
+  .feature-text strong {
+    display: block;
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  .feature-text span {
+    font-size: 12px;
+    color: var(--text-mid);
+  }
+
+  /* TABS */
+  .tabs-wrapper {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 28px 12px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-light);
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.2s;
+    border-bottom: 2.5px solid transparent;
+  }
+  .tab svg { width: 22px; height: 22px; opacity: 0.5; transition: opacity 0.2s; }
+  .tab:hover { color: var(--primary); }
+  .tab:hover svg { opacity: 0.8; }
+  .tab.active {
+    color: var(--primary-dark);
+    border-bottom-color: var(--primary);
+  }
+  .tab.active svg { opacity: 1; }
+
+  /* CONTENT */
+  .content {
+    padding: 36px 48px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .tab-panel { display: none; animation: fadeIn 0.35s ease; }
+  .tab-panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 28px 26px 22px;
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    opacity: 0;
+    transition: opacity 0.22s;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    border-color: rgba(14,165,233,0.25);
+  }
+  .card:hover::before { opacity: 1; }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .card-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+  .card-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light);
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: 6px;
+    padding: 2px 8px;
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 6px;
+  }
+  .card-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: var(--primary-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+  .card-icon svg { width: 22px; height: 22px; }
+
+  .demo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: filter 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+    margin-top: 4px;
+  }
+  .demo-btn:hover { filter: brightness(1.08); transform: scale(1.01); }
+  .demo-btn svg { width: 14px; height: 14px; }
+
+  .card-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 500;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+
+  /* SUMMARY TAB SPECIAL */
+  .summary-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-card .stat-label { font-size: 12px; color: var(--text-light); font-weight: 500; }
+  .stat-card .stat-value { font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; color: var(--primary-dark); }
+  .stat-card .stat-sub { font-size: 12px; color: var(--green); font-weight: 500; }
+
+  /* TRANSACTIONS TAB */
+  .tx-table { width: 100%; border-collapse: collapse; }
+  .tx-table th {
+    text-align: left;
+    font-family: 'Sora', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 10px 16px;
+    background: var(--primary-light);
+    border-radius: 8px;
+  }
+  .tx-table td {
+    padding: 14px 16px;
+    font-size: 13.5px;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border);
+  }
+  .tx-table tr:last-child td { border-bottom: none; }
+  .tx-table tr:hover td { background: #f8fbff; }
+  .tx-badge {
+    display: inline-block;
+    border-radius: 99px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tx-badge.success { background: #dcfce7; color: #16a34a; }
+  .tx-badge.pending { background: #fef9c3; color: #a16207; }
+
+  /* CHEQUEBOOK */
+  .cheque-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .cheque-card {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0ea5e9 100%);
+    border-radius: 16px;
+    padding: 28px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(14,165,233,0.22);
+  }
+  .cheque-card::after {
+    content: '';
+    position: absolute;
+    right: -30px; bottom: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .cheque-card h3 { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 10px; opacity: 0.9; }
+  .cheque-card .amount { font-family: 'Sora', sans-serif; font-size: 30px; font-weight: 700; margin-bottom: 6px; }
+  .cheque-card .sub { font-size: 12px; opacity: 0.7; }
+  .cheque-card.alt {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0c2a4a 100%);
+  }
+
+  /* ACCOUNT OVERVIEW */
+  .account-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .account-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    padding: 24px;
+  }
+  .account-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .account-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+  }
+  .account-row:last-child { border-bottom: none; }
+  .account-row .label { color: var(--text-mid); }
+  .account-row .value { font-weight: 600; color: var(--text-dark); font-family: 'Sora', sans-serif; }
+
+  /* MORE TAB */
+  .more-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .more-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    padding: 24px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .more-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    border-color: rgba(14,165,233,0.25);
+  }
+  .more-card .m-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: var(--primary-light);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    color: var(--primary);
+  }
+  .more-card .m-icon svg { width: 26px; height: 26px; }
+  .more-card h3 { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+  .more-card p { font-size: 12px; color: var(--text-mid); }
+
+  @media (max-width: 900px) {
+    .cards-grid, .more-grid { grid-template-columns: 1fr 1fr; }
+    .summary-stats { grid-template-columns: 1fr 1fr; }
+    .cheque-cards, .account-grid { grid-template-columns: 1fr; }
+    .hero { padding: 28px 20px; }
+    .content { padding: 24px 20px; }
+    .tabs-wrapper { padding: 0 16px; }
+  }
+  @media (max-width: 600px) {
+    .cards-grid, .more-grid { grid-template-columns: 1fr; }
+    .summary-stats { grid-template-columns: 1fr; }
+  }
+   /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: #9ca3af;
+    }
+    footer .dot { color: var(--red); font-size: 18px; vertical-align: middle; }
+    footer strong { color: var(--mid); }
+    footer small { display: block; margin-top: 6px; font-size: 12px; }
+    :root {
+      --red: #e0173d;
+      --dark: #0f1117;
+      --mid: #3b3f4c;
+      --light: #f5f6f8;
+      --border: #e2e5ec;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 24px rgba(0,0,0,0.07);
+      --hover-shadow: 0 12px 40px rgba(0,0,0,0.13);
+    }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a class="back-btn" href="index.html">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to Industries
+  </a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> 6 Solutions Available</div>
+  <h1>Metal & Mining</h1>
+  <p>Smart mining solutions for sustainable operations</p>
+  <div class="hero-features">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="feature-text">
+        <strong>Industry Expertise</strong>
+        <span>Proven solutions for your needs</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/></svg>
+      </div>
+      <div class="feature-text">
+        <strong>Measurable Results</strong>
+        <span>Data-driven outcomes</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrapper">
+  <div class="tabs">
+    <button class="tab active" data-tab="summary">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Tab1
+    </button>
+    <button class="tab" data-tab="transactions">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      Tab2
+    </button>
+    <button class="tab" data-tab="chequebook">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+      Tab3
+    </button>
+    <button class="tab " data-tab="related">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+      Tab4
+    </button>
+    <button class="tab" data-tab="account">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Tab5
+    </button>
+    <button class="tab" data-tab="more">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+      Tab6
+    </button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- TAB1 -->
+  <div class="tab-panel active" id="tab-summary">
+    <p class="section-desc">A high-level overview of your infrastructure portfolio and key metrics.</p>
+    
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div class="card-header"><span class="card-title">Portfolio Health</span><span class="card-num">01</span></div>
+        <p class="card-desc">Real-time health scores across all infrastructure modules and deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Dashboard</button>
+        <div class="card-status"><span class="status-dot"></span>Live Data</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/></svg></div>
+        <div class="card-header"><span class="card-title">Performance Metrics</span><span class="card-num">02</span></div>
+        <p class="card-desc">Track KPIs, SLAs and performance benchmarks across your deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">03</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">04</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">05</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">06</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!--  TAB2 -->
+  <div class="tab-panel" id="tab-transactions">
+    <p class="section-desc">Track all recent service usage, billing activity, and platform transactions.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div class="card-header"><span class="card-title">Portfolio Health</span><span class="card-num">01</span></div>
+        <p class="card-desc">Real-time health scores across all infrastructure modules and deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Dashboard</button>
+        <div class="card-status"><span class="status-dot"></span>Live Data</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/></svg></div>
+        <div class="card-header"><span class="card-title">Performance Metrics</span><span class="card-num">02</span></div>
+        <p class="card-desc">Track KPIs, SLAs and performance benchmarks across your deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">03</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">04</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">05</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">06</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!--  TAB3 -->
+  <div class="tab-panel" id="tab-chequebook">
+    <p class="section-desc">Manage and issue digital cheques for infrastructure payments and vendor settlements.</p>
+    
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div class="card-header"><span class="card-title">Portfolio Health</span><span class="card-num">01</span></div>
+        <p class="card-desc">Real-time health scores across all infrastructure modules and deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Dashboard</button>
+        <div class="card-status"><span class="status-dot"></span>Live Data</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/></svg></div>
+        <div class="card-header"><span class="card-title">Performance Metrics</span><span class="card-num">02</span></div>
+        <p class="card-desc">Track KPIs, SLAs and performance benchmarks across your deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">03</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">04</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">05</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">06</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Tab4 -->
+  <div class="tab-panel" id="tab-related">
+    <p class="section-desc">Explore our comprehensive suite of digital solutions designed specifically for infrastructure</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg></div>
+        <div class="card-header"><span class="card-title">Project Management</span><span class="card-num">01</span></div>
+        <p class="card-desc">Timeline and budget tracking</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <div class="card-header"><span class="card-title">BIM Integration</span><span class="card-num">02</span></div>
+        <p class="card-desc">3D model collaboration</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <div class="card-header"><span class="card-title">Equipment Tracking</span><span class="card-num">03</span></div>
+        <p class="card-desc">Asset location and utilization</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div class="card-header"><span class="card-title">Quality Inspections</span><span class="card-num">04</span></div>
+        <p class="card-desc">Mobile site audit tools</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="card-header"><span class="card-title">Workforce Planning</span><span class="card-num">05</span></div>
+        <p class="card-desc">Labor allocation dashboard</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="card-header"><span class="card-title">Material Management</span><span class="card-num">06</span></div>
+        <p class="card-desc">Supply chain optimization</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB5 -->
+  <div class="tab-panel" id="tab-account">
+    <p class="section-desc">View and manage your account details, usage, and subscription information.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div class="card-header"><span class="card-title">Portfolio Health</span><span class="card-num">01</span></div>
+        <p class="card-desc">Real-time health scores across all infrastructure modules and deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Dashboard</button>
+        <div class="card-status"><span class="status-dot"></span>Live Data</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/></svg></div>
+        <div class="card-header"><span class="card-title">Performance Metrics</span><span class="card-num">02</span></div>
+        <p class="card-desc">Track KPIs, SLAs and performance benchmarks across your deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">03</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">04</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">05</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">06</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- TAB6 -->
+  <div class="tab-panel" id="tab-more">
+    <p class="section-desc">Explore additional tools, settings, and resources for your infrastructure platform.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div class="card-header"><span class="card-title">Portfolio Health</span><span class="card-num">01</span></div>
+        <p class="card-desc">Real-time health scores across all infrastructure modules and deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Dashboard</button>
+        <div class="card-status"><span class="status-dot"></span>Live Data</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/></svg></div>
+        <div class="card-header"><span class="card-title">Performance Metrics</span><span class="card-num">02</span></div>
+        <p class="card-desc">Track KPIs, SLAs and performance benchmarks across your deployments.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">03</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">04</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">05</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-header"><span class="card-title">Compliance Status</span><span class="card-num">06</span></div>
+        <p class="card-desc">Monitor regulatory compliance and certification status in real-time.</p>
+        <button class="demo-btn"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Demo</button>
+        <div class="card-status"><span class="status-dot"></span>Available Now</div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+<footer>
+    <span class="dot">●</span> <strong>Powered by Innovation</strong>
+    <small>Delivering excellence across industries worldwide</small>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
