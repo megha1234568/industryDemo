@@ -18,16 +18,16 @@
   --radius: 14px; --blue: #1a8fe3; --blue-light: #e6f1fb;
   --border-m: rgba(26,143,227,0.15); --bg-surface: #f4f8fd;
 }
-html,body { font-family: 'Barlow','DM Sans', sans-serif; background: var(--bg); color: var(--text-dark); height: 100vh; overflow: hidden;}
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-dark); min-height: 100vh; }
 
 /* TOPBAR */
 .topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; height: 56px; }
-.back-btn { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-mid); text-decoration: none; font-family:'Barlow', 'Sora', sans-serif; font-weight: 500; cursor: pointer; transition: color 0.2s; }
+.back-btn { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-mid); text-decoration: none; font-family: 'Sora', sans-serif; font-weight: 500; cursor: pointer; transition: color 0.2s; }
 .back-btn:hover { color: var(--primary); }
 .back-btn svg { width: 16px; height: 16px; }
 
 /* SERVER STATUS PILL */
-.server-status { margin-left: auto; display: flex; align-items: center; gap: 7px; font-size: 12px; font-family:'Barlow', 'Sora', sans-serif; font-weight: 600; padding: 5px 13px; border-radius: 99px; border: 1.5px solid; transition: all 0.3s; }
+.server-status { margin-left: auto; display: flex; align-items: center; gap: 7px; font-size: 12px; font-family: 'Sora', sans-serif; font-weight: 600; padding: 5px 13px; border-radius: 99px; border: 1.5px solid; transition: all 0.3s; }
 .server-status.checking { color: #94a3b8; border-color: #e2eaf4; background: #f8fafc; }
 .server-status.online   { color: #16a34a; border-color: #bbf7d0; background: #f0fdf4; }
 .server-status.offline  { color: #dc2626; border-color: #fecaca; background: #fff1f2; }
@@ -38,22 +38,22 @@ html,body { font-family: 'Barlow','DM Sans', sans-serif; background: var(--bg); 
 /* HERO */
 .hero { background: linear-gradient(135deg, #e8f4fe 0%, #d0eaf9 50%, #e8f4fe 100%); padding: 44px 48px 36px; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; right: -60px; top: -60px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(14,165,233,0.10) 0%, transparent 70%); pointer-events: none; }
-.badge { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--border); border-radius: 99px; padding: 4px 14px; font-size: 12px; font-family:'Barlow', 'Sora', sans-serif; font-weight: 600; color: var(--primary-dark); margin-bottom: 16px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--border); border-radius: 99px; padding: 4px 14px; font-size: 12px; font-family: 'Sora', sans-serif; font-weight: 600; color: var(--primary-dark); margin-bottom: 16px; }
 .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); display: inline-block; }
-.hero h1 { font-family: 'Barlow','Sora', sans-serif; font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; letter-spacing: -1px; }
+.hero h1 { font-family: 'Sora', sans-serif; font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; letter-spacing: -1px; }
 .hero p { font-size: 15px; color: var(--text-mid); margin-bottom: 28px; }
 .hero-features { display: flex; gap: 40px; }
 .feature-item { display: flex; align-items: center; gap: 12px; }
 .feature-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(14,165,233,0.10); border: 1px solid rgba(14,165,233,0.18); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
 .feature-icon svg { width: 18px; height: 18px; }
-.feature-text strong { display: block; font-family:'Barlow', 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: var(--text-dark); }
+.feature-text strong { display: block; font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: var(--text-dark); }
 .feature-text span { font-size: 12px; color: var(--text-mid); }
 
 /* TABS */
 .tabs-wrapper { background: #fff; border-bottom: 1px solid var(--border); padding: 0 48px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
 .tabs { display: flex; overflow-x: auto; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
-.tab { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 28px 12px; cursor: pointer; border: none; background: none; font-family: 'Barlow','Sora', sans-serif; font-size: 12px; font-weight: 500; color: var(--text-light); white-space: nowrap; transition: color 0.2s; border-bottom: 2.5px solid transparent; }
+.tab { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 28px 12px; cursor: pointer; border: none; background: none; font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 500; color: var(--text-light); white-space: nowrap; transition: color 0.2s; border-bottom: 2.5px solid transparent; }
 .tab svg { width: 22px; height: 22px; opacity: 0.5; transition: opacity 0.2s; }
 .tab:hover { color: var(--primary); }
 .tab:hover svg { opacity: 0.8; }
@@ -61,10 +61,6 @@ html,body { font-family: 'Barlow','DM Sans', sans-serif; background: var(--bg); 
 .tab.active svg { opacity: 1; }
 
 /* CONTENT */
-.content-scroll{
-  height: calc(100vh - 56px - 178px - 65px); overflow-y: scroll; 
-
-}
 .content { padding: 36px 48px 60px; max-width: 1200px; margin: 0 auto; }
 .tab-panel { display: none; animation: fadeIn 0.35s ease; }
 .tab-panel.active { display: block; }
@@ -77,19 +73,19 @@ html,body { font-family: 'Barlow','DM Sans', sans-serif; background: var(--bg); 
 .card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(14,165,233,0.25); }
 .card:hover::before { opacity: 1; }
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
-.card-title { font-family: 'Barlow','Sora', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-dark); }
-.card-num { font-family:'Barlow', 'Sora', sans-serif; font-size: 12px; font-weight: 600; background: var(--primary-light); color: var(--primary-dark); border-radius: 6px; padding: 2px 8px; }
+.card-title { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-dark); }
+.card-num { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; background: var(--primary-light); color: var(--primary-dark); border-radius: 6px; padding: 2px 8px; }
 .card-desc { font-size: 13px; color: var(--text-mid); margin-bottom: 6px; }
 .card-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 4px; }
 .card-icon svg { width: 22px; height: 22px; }
-.demo-btn { display: flex; align-items: center; justify-content: center; gap: 7px; background: linear-gradient(90deg, var(--primary), var(--accent)); color: #fff; border: none; border-radius: 8px; padding: 11px 0; font-family:'Barlow', 'Sora', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; transition: filter 0.2s, transform 0.15s; margin-top: 4px; }
+.demo-btn { display: flex; align-items: center; justify-content: center; gap: 7px; background: linear-gradient(90deg, var(--primary), var(--accent)); color: #fff; border: none; border-radius: 8px; padding: 11px 0; font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; transition: filter 0.2s, transform 0.15s; margin-top: 4px; }
 .demo-btn:hover { filter: brightness(1.08); transform: scale(1.01); }
 .demo-btn svg { width: 14px; height: 14px; }
 .card-status { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); font-weight: 500; justify-content: center; margin-top: 2px; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
 
 /* FILE TYPE BADGE */
-.file-type-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-family:'Barlow', 'Sora', sans-serif; font-weight: 600; border-radius: 6px; padding: 3px 9px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+.file-type-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-family: 'Sora', sans-serif; font-weight: 600; border-radius: 6px; padding: 3px 9px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
 .file-type-badge.html { background: #fef9c3; color: #854d0e; }
 .file-type-badge.exe  { background: #fee2e2; color: #991b1b; }
 .file-type-badge.ppt  { background: #ffedd5; color: #9a3412; }
@@ -98,13 +94,13 @@ html,body { font-family: 'Barlow','DM Sans', sans-serif; background: var(--bg); 
 .file-type-badge.other{ background: #f1f5f9; color: #475569; }
 
 /* OFFLINE BANNER */
-.offline-banner { display: none; background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 10px; padding: 14px 18px; margin-bottom: 24px; font-size: 13px; color: #9a3412; font-family: 'Barlow','Sora', sans-serif; font-weight: 500; align-items: center; gap: 10px; }
+.offline-banner { display: none; background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 10px; padding: 14px 18px; margin-bottom: 24px; font-size: 13px; color: #9a3412; font-family: 'Sora', sans-serif; font-weight: 500; align-items: center; gap: 10px; }
 .offline-banner.show { display: flex; }
 .offline-banner i { font-size: 18px; flex-shrink: 0; }
 .offline-banner a { color: #ea580c; font-weight: 700; text-decoration: underline; cursor: pointer; }
 
 /* TOAST */
-.toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px); background: #0f172a; color: #fff; border-radius: 10px; padding: 13px 22px; font-size: 13px; font-family:'Barlow', 'Sora', sans-serif; font-weight: 500; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.22); z-index: 9999; transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), opacity 0.3s; opacity: 0; pointer-events: none; white-space: nowrap; }
+.toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px); background: #0f172a; color: #fff; border-radius: 10px; padding: 13px 22px; font-size: 13px; font-family: 'Sora', sans-serif; font-weight: 500; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.22); z-index: 9999; transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), opacity 0.3s; opacity: 0; pointer-events: none; white-space: nowrap; }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 .toast i { font-size: 17px; }
 .toast.success i { color: #22c55e; }
@@ -193,8 +189,8 @@ footer small { display: block; margin-top: 6px; font-size: 12px; }
 
 <div class="hero">
   <div class="badge"><span class="badge-dot"></span> Solutions Available</div>
-  <h1>Chemical</h1>
-  <p>Digital solutions for chemical manufacturing excellence</p>
+  <h1>Oil & Gas</h1>
+  <p>Advanced technology for energy sector operations</p>
   <div class="hero-features">
     <div class="feature-item">
       <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
@@ -223,7 +219,7 @@ footer small { display: block; margin-top: 6px; font-size: 12px; }
     </button>
   </div>
 </div>
-<div class="content-scroll">
+
 <div class="content">
   <!-- Connected Enterprise -->
   <div class="tab-panel active" id="tab-summary">
@@ -241,7 +237,6 @@ footer small { display: block; margin-top: 6px; font-size: 12px; }
     </div>
     <div class="cards-grid" id="grid-chequebook"></div>
   </div>
-</div>
 </div>
 
 <footer>
@@ -376,32 +371,31 @@ function getFileBadge(filePath) {
 const TABS = {
   summary: {
     cards: [
-       {
+ {
         title: 'Capabilities',  num: '01', desc: 'Real-time health scores across all infrastructure modules and deployments.',
         btnLabel: 'View Dashboard', status: 'Live Data', live: true,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-chart-bar',
         slides: [
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide8_3fec030b-c3f1-42af-9fe4-1896a095a014.JPG', title:'',   },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide2_cccbe6dc-e501-4881-9a30-cd653d4235db.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Chemical_Executive_Selling_Deck_-_L100_2d2cb056-d9bc-45e1-ba77-2d597b65e1f1.png', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide4_f9a7613b-3059-4cf6-876d-98d37ae4d5c2.JPG', title:'', },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide5_08665f32-6dea-4123-8c3a-e9e09813beef.jpg', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide6_159a893e-e0c2-4625-a652-2c21843fee06.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide7_db51bcdd-1f26-4df2-aa04-4e9f860ad297.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide8_dd72006e-f097-4fdb-ae69-c90c6bc92201.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide9_3f703e47-034a-4690-a299-09b28f1f3bb0.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide10_90eaa7e6-b8cf-493d-a971-e8531da10093.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide11_e5f63722-2d98-4967-bfdf-ab2111f8abaa.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide12_212b974b-19f7-4bb8-b4a8-76fad14653c4.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide13_019c4b0b-f43c-46cc-b066-4b4c067bd97c.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide14_eac4fe50-d907-4dbf-a5b9-9ab9afb6f0a5.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide15_5c450f19-d4b5-4c35-bb4a-7f60e8e8e7d7.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide16_0cdb69a0-821f-4da1-acd8-a1bb6d2387a6.JPG', title:'',  },
-          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/05_Chem_ACE_CAP_b8e5c543-0a2a-4de9-9087-fe59aeb13e3b.jpg', title:'',  }
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/front_page_presentation_5348361d-e0c4-4f6d-9196-310dc1fffde0.jpg', title:'',   },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide2_221e122c-4ba6-4a3c-a18a-e7662532290d.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Oil_&_Gas_Executive_Selling_Deck_-_L100_2ed2a4b0-4f4b-4af0-930b-71d07bfe2753.png', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide4_286ad60f-2d7d-49a3-880c-baac4fd3d877.JPG', title:'', },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide5_a76077ed-86cb-418b-8b30-28488d723cad.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide6_279afa43-b704-40ec-b078-c3a91e09fbe9.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide7_b0967aa2-9841-4099-977f-e22770cf975c.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide8_8dce068d-e6e8-4ed3-b96b-1147d4eb6877.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide9_07c0290f-a1fe-45f8-953e-128d924fad64.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide10_560b33f7-84bc-46c5-9d42-5a505aee88ee.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide11_03a07619-a0fd-40d3-b04e-d3fb39f0c21f.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide12_aa4e2cb4-e241-46bb-b106-500c78bc1d40.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide13_a0a9567c-708a-4ead-a2e9-cdcf47dc2626.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide14_103b62b5-20a2-43fc-8e17-949f6db30a61.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide15_22e44b1a-5fc4-41e1-b71b-699f49470071.JPG', title:'',  },
+          { src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide16_ce0a71ed-4f8b-479f-b9ef-44dd14d0c79d.JPG', title:'',  }
         ]
       },
- {
+       {
         title: 'Cyber Security', num: '02', desc: 'Track KPIs, SLAs and performance benchmarks across your deployments.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
@@ -434,127 +428,120 @@ const TABS = {
         ]
       },
       /* ── VIDEO cards below – replace video:'...' with your actual file path ── */
-      {
-        title: 'SDA', num: '04', desc: 'End-to-end supply chain visibility with predictive alerts.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-truck',
-        video: 'C:/Users/MSharma14/Downloads/Software-defined Automation Feature Video.MP4'
-      },
      {
-        title: 'ThinManager', num: '05', desc: 'End-to-end supply chain visibility with predictive alerts.',
+        title: 'ThinManager', num: '04', desc: 'End-to-end supply chain visibility with predictive alerts.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-truck',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Thin_Manager_3e1359f3-d64d-48e5-8943-adaff5c49898.MP4'
       },
       {
-        title: 'Stratix 5950 Security', num: '06', desc: 'Drug pipeline progress, trial milestones and phase transition tracking.',
+        title: 'Stratix 5950 Security', num: '05', desc: 'Drug pipeline progress, trial milestones and phase transition tracking.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-dna',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Stratix_5950_6d3a6846-1977-455a-a698-3099f7f02f87.MP4'
       },
       {
-        title: 'Stratix 4300', num: '07', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'Stratix 4300', num: '06', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Stratix_4300_eda8625a-01c0-40a7-8e92-08e3c12831ac.MP4'
       },
       {
-        title: 'Proactive CyberSecurity', num: '08', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'Proactive CyberSecurity', num: '07', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Cybersecurity_f0ecab6c-710f-4a9b-a9ab-abfbe585039e.mp4'
       },
       {
-        title: 'Modern Factory', num: '09', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'Modern Factory', num: '08', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Modern_Factory_8a0ab752-0cd1-45ce-b7f4-f4f43a555636.MP4'
       },
       {
-        title: 'MagneMotion', num: '10', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'MagneMotion', num: '09', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_MagneMotion_8e9c509c-fefe-4c62-b1a4-409694921370.MP4'
       },
       {
-        title: 'LogixAI', num: '11', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'LogixAI', num: '10', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_LogixAI_69e22f29-33ed-408b-8241-058f67620729.MP4'
       },
       {
-        title: 'Intelligent Package Power', num: '12', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'Intelligent Package Power', num: '11', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_IPP_732e45c4-22eb-48fa-b8ac-5f02f99936a4.MP4'
       },
       {
-        title: 'Infrastructure as a Service', num: '13', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'Infrastructure as a Service', num: '12', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Infrastructure-as-a-Service_49417222-4e24-4412-935f-8be47485d902.MP4'
       },
       {
-        title: 'Industrial Security-TM', num: '14', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'Industrial Security-TM', num: '13', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Industrial_Security_TM_a2e9a190-5440-4d48-b761-d3e1c7821031.mp4'
       },
       {
-        title: 'GuardianAI', num: '15', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'GuardianAI', num: '14', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/Harness_the_Power_of_AI_and_Stay_Ahead_of_Unplanned_Downtime_Video_d4e28e85-d6b6-42dd-9807-b7732c8321f7.MP4'
       },
       {
-        title: 'Fiix', num: '16', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'Fiix', num: '15', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Fiix_5dbd7428-4e22-4381-9da6-5cda91f96388.MP4'
       },
       {
-        title: 'FactoryTalk Security', num: '17', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'FactoryTalk Security', num: '16', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_FactoryTalk_Security_dc29c687-f19c-4bee-8071-9b70b13b184e.mp4'
       },
       {
-        title: 'CUBIC', num: '18', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'CUBIC', num: '17', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/Cubic_Modulsystem_2022_161eb6c6-ee9d-462a-bc67-0c07a595c436.mp4'
       },
       {
-        title: 'CIP Security', num: '19', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'CIP Security', num: '18', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/Understanding_CIP_Security_Video_fbfcd55a-0065-4e18-9377-c6c3696f440f.MP4'
       },
       {
-        title: 'CIP Safety', num: '20', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'CIP Safety', num: '19', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
         video: 'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CIP_Safety_0f4b7049-eef4-4d20-928d-9abb0216acf7.mp4'
       },
       {
-        title: 'Analytic & IIOT - FTIS', num: '21', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
+        title: 'Analytic & IIOT - FTIS', num: '20', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
         btnLabel: 'View Demo', status: 'Available Now', live: false,
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
         mIcon: 'ti-clipboard-check',
@@ -566,11 +553,9 @@ const TABS = {
   transactions: {
     desc: 'Track all recent service usage, billing activity, and platform transactions.',
     cards: [
-      { title: 'Chemical Plant wide Automation & Process Power', num: '01', desc: 'Live feed of all financial and operational transactions.', btnLabel: 'View Dashboard', status: 'Live Data', live: true, icon: '<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>', mIcon: 'ti-receipt', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Chemical_ Plantwide Automation and Process Power Interactive Demonstration (2).PPTX'}
-      
+      { title: 'Oil & Gas Midstream', num: '01', desc: 'Live feed of all financial and operational transactions.', btnLabel: 'View Dashboard', status: 'Live Data', live: true, icon: '<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>', mIcon: 'ti-receipt', slides: [{src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg',title:'Portfolio Overview'},{src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg',title:'Module Status Board'},{src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg',title:'Uptime Trends'},{src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg',title:'Risk Heatmap'},{src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg',title:'Incident Response Log'},{src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg',title:'Executive Summary'}] }
     ]
   },
-
   /* ══════════════════════════════════════════════════════
      GENERAL INTERACTIVE DEMOS
      Set `file` to ANY path — .exe, .ppt, .pptx, .html,
@@ -602,7 +587,7 @@ const TABS = {
    RENDER CARDS
 ═══════════════════════════════════════════════════════════ */
 function buildCard(card, tabKey, idx) {
-  const isFile = (tabKey === 'chequebook' || tabKey === 'transactions') ;
+  const isFile = (tabKey === 'chequebook');
   const c = document.createElement('div');
   c.className = 'card';
   c.innerHTML = `

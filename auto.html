@@ -3,346 +3,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Life Sciences – CPG Solutions</title>
+<title>Automotive & Tire – Solutions</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet">
 <style>
-/* ─── RESET & TOKENS ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --primary: #0ea5e9;
-  --primary-dark: #0ea5e9;
-  --primary-light: #e0f2fe;
-  --accent: #0ea5e9;
-  --bg: #f0f7ff;
-  --bg-card: #ffffff;
-  --text-dark: #0f172a;
-  --text-mid: #475569;
-  --text-light: #94a3b8;
-  --border: #e2eaf4;
-  --green: #22c55e;
+  --primary: #0ea5e9; --primary-dark: #0ea5e9; --primary-light: #e0f2fe;
+  --accent: #0ea5e9; --bg: #f0f7ff; --bg-card: #ffffff;
+  --text-dark: #0f172a; --text-mid: #475569; --text-light: #94a3b8;
+  --border: #e2eaf4; --green: #22c55e;
   --shadow-sm: 0 2px 8px rgba(14,165,233,0.08);
   --shadow-md: 0 8px 32px rgba(14,165,233,0.13);
-  --radius: 14px;
+  --radius: 14px; --blue: #1a8fe3; --blue-light: #e6f1fb;
+  --border-m: rgba(26,143,227,0.15); --bg-surface: #f4f8fd;
+}
+html,body { font-family: 'Barlow','DM Sans', sans-serif; background: var(--bg); color: var(--text-dark); height: 100vh; overflow: hidden;}
 
-  /* modal */
-  --blue: #1a8fe3;
-  --blue-light: #e6f1fb;
-  --blue-dark: #0c5fa0;
-  --border-m: rgba(26,143,227,0.15);
-  --bg-surface: #f4f8fd;
-}
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text-dark);
-  min-height: 100vh;
-}
-
-/* ─── TOPBAR ─────────────────────────────────────────────── */
-.topbar {
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  height: 56px;
-  gap: 8px;
-}
-.back-btn {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px; color: var(--text-mid);
-  text-decoration: none;
-  font-family: 'Sora', sans-serif; font-weight: 500;
-  cursor: pointer; transition: color 0.2s;
-}
+/* TOPBAR */
+.topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; height: 56px; }
+.back-btn { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-mid); text-decoration: none; font-family:'Barlow', 'Sora', sans-serif; font-weight: 500; cursor: pointer; transition: color 0.2s; }
 .back-btn:hover { color: var(--primary); }
 .back-btn svg { width: 16px; height: 16px; }
 
-/* ─── HERO ───────────────────────────────────────────────── */
-.hero {
-  background: linear-gradient(135deg, #e8f4fe 0%, #d0eaf9 50%, #e8f4fe 100%);
-  padding: 44px 48px 36px;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; right: -60px; top: -60px;
-  width: 340px; height: 340px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(14,165,233,0.10) 0%, transparent 70%);
-  pointer-events: none;
-}
-.badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 99px; padding: 4px 14px;
-  font-size: 12px; font-family: 'Sora', sans-serif; font-weight: 600;
-  color: var(--primary-dark); margin-bottom: 16px;
-}
+/* SERVER STATUS PILL */
+.server-status { margin-left: auto; display: flex; align-items: center; gap: 7px; font-size: 12px; font-family:'Barlow', 'Sora', sans-serif; font-weight: 600; padding: 5px 13px; border-radius: 99px; border: 1.5px solid; transition: all 0.3s; }
+.server-status.checking { color: #94a3b8; border-color: #e2eaf4; background: #f8fafc; }
+.server-status.online   { color: #16a34a; border-color: #bbf7d0; background: #f0fdf4; }
+.server-status.offline  { color: #dc2626; border-color: #fecaca; background: #fff1f2; }
+.server-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.server-status.online .server-dot { animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, #e8f4fe 0%, #d0eaf9 50%, #e8f4fe 100%); padding: 44px 48px 36px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; right: -60px; top: -60px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(14,165,233,0.10) 0%, transparent 70%); pointer-events: none; }
+.badge { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--border); border-radius: 99px; padding: 4px 14px; font-size: 12px; font-family:'Barlow', 'Sora', sans-serif; font-weight: 600; color: var(--primary-dark); margin-bottom: 16px; }
 .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); display: inline-block; }
-.hero h1 {
-  font-family: 'Sora', sans-serif; font-size: 36px; font-weight: 700;
-  color: var(--text-dark); margin-bottom: 8px; letter-spacing: -1px;
-}
+.hero h1 { font-family:'Barlow', 'Sora', sans-serif; font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; letter-spacing: -1px; }
 .hero p { font-size: 15px; color: var(--text-mid); margin-bottom: 28px; }
 .hero-features { display: flex; gap: 40px; }
 .feature-item { display: flex; align-items: center; gap: 12px; }
-.feature-icon {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: rgba(14,165,233,0.10); border: 1px solid rgba(14,165,233,0.18);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--primary); flex-shrink: 0;
-}
+.feature-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(14,165,233,0.10); border: 1px solid rgba(14,165,233,0.18); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
 .feature-icon svg { width: 18px; height: 18px; }
-.feature-text strong { display: block; font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: var(--text-dark); }
+.feature-text strong { display: block; font-family:'Barlow', 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: var(--text-dark); }
 .feature-text span { font-size: 12px; color: var(--text-mid); }
 
-/* ─── TABS ───────────────────────────────────────────────── */
-.tabs-wrapper {
-  background: #fff; border-bottom: 1px solid var(--border);
-  padding: 0 48px; position: sticky; top: 0; z-index: 10;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-}
-.tabs { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+/* TABS */
+.tabs-wrapper { background: #fff; border-bottom: 1px solid var(--border); padding: 0 48px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.tabs { display: flex; overflow-x: auto; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
-.tab {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  padding: 16px 28px 12px; cursor: pointer; border: none; background: none;
-  font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 500;
-  color: var(--text-light); position: relative; white-space: nowrap;
-  transition: color 0.2s; border-bottom: 2.5px solid transparent;
-}
+.tab { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 28px 12px; cursor: pointer; border: none; background: none; font-family: 'Barlow','Sora', sans-serif; font-size: 12px; font-weight: 500; color: var(--text-light); white-space: nowrap; transition: color 0.2s; border-bottom: 2.5px solid transparent; }
 .tab svg { width: 22px; height: 22px; opacity: 0.5; transition: opacity 0.2s; }
 .tab:hover { color: var(--primary); }
 .tab:hover svg { opacity: 0.8; }
 .tab.active { color: var(--primary-dark); border-bottom-color: var(--primary); }
 .tab.active svg { opacity: 1; }
 
-/* ─── CONTENT ────────────────────────────────────────────── */
+/* CONTENT */
+.content-scroll{
+  height: calc(100vh - 56px - 178px - 65px); overflow-y: scroll; 
+
+}
 .content { padding: 36px 48px 60px; max-width: 1200px; margin: 0 auto; }
 .tab-panel { display: none; animation: fadeIn 0.35s ease; }
 .tab-panel.active { display: block; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.section-desc { font-size: 14px; color: var(--text-mid); margin-bottom: 28px; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ─── CARDS GRID ─────────────────────────────────────────── */
+/* CARDS */
 .cards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-
-.card {
-  background: var(--bg-card); border-radius: var(--radius);
-  padding: 28px 26px 22px; border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
-  gap: 10px; transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
-  position: relative; overflow: hidden; cursor: pointer;
-}
-.card::before {
-  content: ''; position: absolute; top: 0; left: 0;
-  width: 100%; height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  opacity: 0; transition: opacity 0.22s;
-}
+.card { background: var(--bg-card); border-radius: var(--radius); padding: 28px 26px 22px; border: 1.5px solid var(--border); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 10px; transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s; position: relative; overflow: hidden; cursor: pointer; }
+.card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); opacity: 0; transition: opacity 0.22s; }
 .card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(14,165,233,0.25); }
 .card:hover::before { opacity: 1; }
-
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
-.card-title { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-dark); }
-.card-num {
-  font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
-  background: var(--primary-light); color: var(--primary-dark);
-  border-radius: 6px; padding: 2px 8px;
-}
+.card-title { font-family:'Barlow', 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-dark); }
+.card-num { font-family:'Barlow', 'Sora', sans-serif; font-size: 12px; font-weight: 600; background: var(--primary-light); color: var(--primary-dark); border-radius: 6px; padding: 2px 8px; }
 .card-desc { font-size: 13px; color: var(--text-mid); margin-bottom: 6px; }
-.card-icon {
-  width: 42px; height: 42px; border-radius: 10px;
-  background: var(--primary-light); display: flex; align-items: center;
-  justify-content: center; color: var(--primary); margin-bottom: 4px;
-}
+.card-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 4px; }
 .card-icon svg { width: 22px; height: 22px; }
-
-.demo-btn {
-  display: flex; align-items: center; justify-content: center; gap: 7px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  color: #fff; border: none; border-radius: 8px; padding: 11px 0;
-  font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600;
-  cursor: pointer; width: 100%; transition: filter 0.2s, transform 0.15s;
-  letter-spacing: 0.01em; margin-top: 4px;
-}
+.demo-btn { display: flex; align-items: center; justify-content: center; gap: 7px; background: linear-gradient(90deg, var(--primary), var(--accent)); color: #fff; border: none; border-radius: 8px; padding: 11px 0; font-family:'Barlow', 'Sora', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; transition: filter 0.2s, transform 0.15s; margin-top: 4px; }
 .demo-btn:hover { filter: brightness(1.08); transform: scale(1.01); }
 .demo-btn svg { width: 14px; height: 14px; }
-
-.card-status {
-  display: flex; align-items: center; gap: 6px; font-size: 12px;
-  color: var(--green); font-weight: 500; justify-content: center; margin-top: 2px;
-}
+.card-status { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); font-weight: 500; justify-content: center; margin-top: 2px; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
 
-/* ─── FOOTER ─────────────────────────────────────────────── */
-footer {
-  text-align: center; padding: 32px 24px; background: #fff;
-  border-top: 1px solid var(--border); font-size: 13px; color: #9ca3af;
-}
+/* FILE TYPE BADGE */
+.file-type-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-family: 'Barlow','Sora', sans-serif; font-weight: 600; border-radius: 6px; padding: 3px 9px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+.file-type-badge.html { background: #fef9c3; color: #854d0e; }
+.file-type-badge.exe  { background: #fee2e2; color: #991b1b; }
+.file-type-badge.ppt  { background: #ffedd5; color: #9a3412; }
+.file-type-badge.bat  { background: #fce7f3; color: #9d174d; }
+.file-type-badge.pdf  { background: #ede9fe; color: #5b21b6; }
+.file-type-badge.other{ background: #f1f5f9; color: #475569; }
+
+/* OFFLINE BANNER */
+.offline-banner { display: none; background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 10px; padding: 14px 18px; margin-bottom: 24px; font-size: 13px; color: #9a3412; font-family: 'Barlow','Sora', sans-serif; font-weight: 500; align-items: center; gap: 10px; }
+.offline-banner.show { display: flex; }
+.offline-banner i { font-size: 18px; flex-shrink: 0; }
+.offline-banner a { color: #ea580c; font-weight: 700; text-decoration: underline; cursor: pointer; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px); background: #0f172a; color: #fff; border-radius: 10px; padding: 13px 22px; font-size: 13px; font-family: 'Barlow','Sora', sans-serif; font-weight: 500; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.22); z-index: 9999; transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), opacity 0.3s; opacity: 0; pointer-events: none; white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+.toast i { font-size: 17px; }
+.toast.success i { color: #22c55e; }
+.toast.info    i { color: #0ea5e9; }
+.toast.warn    i { color: #f59e0b; }
+.toast.error   i { color: #ef4444; }
+
+/* FOOTER */
+footer { text-align: center; padding: 32px 24px; background: #fff; border-top: 1px solid var(--border); font-size: 13px; color: #9ca3af; }
 footer .dot { color: #e0173d; font-size: 18px; vertical-align: middle; }
 footer strong { color: #3b3f4c; }
 footer small { display: block; margin-top: 6px; font-size: 12px; }
 
-/* ─── MODAL OVERLAY ──────────────────────────────────────── */
-.modal-overlay {
-  display: none; position: fixed; inset: 0; z-index: 1000;
-  background: rgba(8,18,38,0.55); backdrop-filter: blur(4px);
-  align-items: center; justify-content: center; padding: 20px;
-}
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(8,18,38,0.55); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px; }
 .modal-overlay.open { display: flex; animation: overlayIn .2s ease; }
 @keyframes overlayIn { from{opacity:0} to{opacity:1} }
-
-/* ─── MODAL SHELL ────────────────────────────────────────── */
-.modal {
-  background: #fff; border-radius: 20px; width: 100%; max-width: 720px;
-  overflow: hidden; box-shadow: 0 24px 64px rgba(10,30,60,0.22);
-  animation: modalIn .25s ease;
-}
+.modal { background: #fff; border-radius: 20px; width: 100%; max-width: 760px; overflow: hidden; box-shadow: 0 24px 64px rgba(10,30,60,0.22); animation: modalIn .25s ease; }
 @keyframes modalIn { from{opacity:0;transform:scale(.96) translateY(16px)} to{opacity:1;transform:scale(1) translateY(0)} }
-
-/* MODAL HEADER */
-.modal-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 22px; border-bottom: 1px solid var(--border-m);
-}
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 1px solid var(--border-m); }
 .mh-left { display: flex; align-items: center; gap: 12px; }
-.mh-icon {
-  width: 40px; height: 40px; background: var(--blue-light);
-  border-radius: 10px; display: flex; align-items: center; justify-content: center;
-}
+.mh-icon { width: 40px; height: 40px; background: var(--blue-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
 .mh-icon i { font-size: 20px; color: var(--blue); }
 .mh-title { font-size: 16px; font-weight: 700; color: var(--text-dark); }
 .mh-sub   { font-size: 12px; color: var(--text-mid); margin-top: 2px; }
-.close-btn {
-  width: 34px; height: 34px; border: 1px solid var(--border-m);
-  background: transparent; border-radius: 9px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text-mid); transition: background .15s, color .15s;
-}
+.close-btn { width: 34px; height: 34px; border: 1px solid var(--border-m); background: transparent; border-radius: 9px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-mid); transition: background .15s, color .15s; }
 .close-btn:hover { background: var(--bg-surface); color: var(--text-dark); }
 .close-btn i { font-size: 18px; }
-
-/* SLIDE AREA */
-.slide-area {
-  position: relative; width: 100%; height: 420px; background: #000; overflow: hidden;
-}
-.slide {
-  position: absolute; inset: 0; opacity: 0;
-  transition: opacity .45s ease, transform .45s ease; transform: translateX(30px);
-}
-.slide.active  { opacity: 1; transform: translateX(0); z-index: 1; }
+.slide-area { position: relative; width: 100%; height: 440px; background: #000; overflow: hidden; }
+.fullscreen-btn { position: absolute; top: 12px; right: 12px; z-index: 5; width: 36px; height: 36px; background: rgba(255,255,255,0.18); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; transition: background .15s, transform .15s; }
+.fullscreen-btn:hover { background: rgba(255,255,255,0.32); transform: scale(1.08); }
+.fullscreen-btn i { font-size: 17px; }
+.slide { position: absolute; inset: 0; opacity: 0; transition: opacity .45s ease, transform .45s ease; transform: translateX(30px); }
+.slide.active { opacity: 1; transform: translateX(0); z-index: 1; }
 .slide.exit-left { opacity: 0; transform: translateX(-30px); z-index: 0; }
-.slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.slide-caption {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(transparent, rgba(8,20,40,0.72));
-  padding: 40px 22px 18px; z-index: 2;
-}
+.slide img { width: calc(100% - 24px); height: calc(100% - 24px); object-fit: contain; display: block; margin: 12px auto; border-radius: 6px; background: #000; }
+.slide-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(8,20,40,0.72)); padding: 40px 22px 18px; z-index: 2; }
 .slide-caption h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
 .slide-caption p  { font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.5; }
-
-.arrow-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 40px; height: 40px;
-  background: rgba(255,255,255,.18); backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,.3); border-radius: 50%;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  color: #fff; z-index: 4; transition: background .15s;
-}
+.arrow-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,.18); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.3); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; z-index: 4; transition: background .15s; }
 .arrow-btn:hover { background: rgba(255,255,255,.32); }
 .arrow-btn:disabled { opacity: .3; cursor: not-allowed; }
 .arrow-btn i { font-size: 20px; }
 .arrow-left  { left: 14px; }
 .arrow-right { right: 14px; }
-
-/* THUMB STRIP */
-.thumb-strip {
-  display: flex; gap: 8px; padding: 14px 22px; overflow-x: auto;
-  background: var(--bg-surface); border-bottom: 1px solid var(--border-m);
-  scrollbar-width: none;
-}
+.modal-video-wrap { position: relative; width: 100%; height: 440px; background: #000; display: flex; align-items: center; justify-content: center; }
+.modal-video-wrap video { width: calc(100% - 24px); height: calc(100% - 24px); object-fit: contain; border-radius: 6px; display: block; }
+.video-fullscreen-btn { position: absolute; top: 12px; right: 12px; z-index: 5; width: 36px; height: 36px; background: rgba(255,255,255,0.18); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; transition: background .15s, transform .15s; }
+.video-fullscreen-btn:hover { background: rgba(255,255,255,0.32); transform: scale(1.08); }
+.video-fullscreen-btn i { font-size: 17px; }
+.thumb-strip { display: flex; gap: 8px; padding: 14px 22px; overflow-x: auto; background: var(--bg-surface); border-bottom: 1px solid var(--border-m); scrollbar-width: none; }
 .thumb-strip::-webkit-scrollbar { display: none; }
-.thumb {
-  flex-shrink: 0; width: 72px; height: 50px; border-radius: 8px;
-  overflow: hidden; cursor: pointer; border: 2px solid transparent;
-  transition: border-color .2s, transform .15s; opacity: .6;
-}
+.thumb { flex-shrink: 0; width: 72px; height: 50px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color .2s, transform .15s; opacity: .6; }
 .thumb:hover { opacity: .85; transform: scale(1.04); }
 .thumb.active { border-color: var(--blue); opacity: 1; }
 .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-/* DOT NAV */
-.slide-nav {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 22px; border-top: 1px solid var(--border-m);
-}
-.nav-btn {
-  width: 36px; height: 36px; border: 1px solid var(--border-m);
-  background: transparent; border-radius: 9px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text-mid); transition: background .15s, color .15s, border-color .15s;
-}
+.slide-nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 22px; border-top: 1px solid var(--border-m); }
+.nav-btn { width: 36px; height: 36px; border: 1px solid var(--border-m); background: transparent; border-radius: 9px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-mid); transition: background .15s, color .15s, border-color .15s; }
 .nav-btn:hover:not(:disabled) { background: var(--blue); color: #fff; border-color: var(--blue); }
 .nav-btn:disabled { opacity: .3; cursor: not-allowed; }
 .nav-btn i { font-size: 18px; }
-
 .dots { display: flex; gap: 6px; align-items: center; }
-.dot {
-  width: 7px; height: 7px; border-radius: 50%; background: #c8d9ea;
-  border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s;
-}
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #c8d9ea; border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
 .dot.active { background: var(--blue); transform: scale(1.45); }
-
-/* MODAL FOOTER */
-.modal-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 22px; background: var(--bg-surface); border-top: 1px solid var(--border-m);
-}
+.modal-footer { display: flex; align-items: center; justify-content: space-between; padding: 12px 22px; background: var(--bg-surface); border-top: 1px solid var(--border-m); }
 .mf-live { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #22c55e; }
-.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
 
-/* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .cards-grid { grid-template-columns: 1fr 1fr; }
-  .hero { padding: 28px 20px; }
-  .content { padding: 24px 20px; }
-  .tabs-wrapper { padding: 0 16px; }
-}
-@media (max-width: 600px) {
-  .cards-grid { grid-template-columns: 1fr; }
-  .slide-area { height: 260px; }
-  .thumb { width: 56px; height: 40px; }
-  .modal { border-radius: 14px; }
-  .hero-features { flex-direction: column; gap: 16px; }
-}
+@media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr 1fr; } .hero { padding: 28px 20px; } .content { padding: 24px 20px; } .tabs-wrapper { padding: 0 16px; } }
+@media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } .slide-area, .modal-video-wrap { height: 260px; } .modal { border-radius: 14px; } .hero-features { flex-direction: column; gap: 16px; } }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     DASHBOARD
-═══════════════════════════════════════════════════════════ -->
-
-<!-- TOPBAR -->
 <div class="topbar">
   <a class="back-btn" href="index.html">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     Back to Industries
   </a>
+  <div class="server-status checking" id="serverStatus">
+    <div class="server-dot"></div>
+    <span id="serverStatusText">Checking launcher…</span>
+  </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="badge"><span class="badge-dot"></span> 6 Solutions Available</div>
-  <h1>Automotive & Tire</h1>
+  <div class="badge"><span class="badge-dot"></span> Solutions Available</div>
+  <h1>Automotive &amp; Tire</h1>
   <p>Driving innovation in mobility and manufacturing</p>
   <div class="hero-features">
     <div class="feature-item">
@@ -356,675 +207,295 @@ footer small { display: block; margin-top: 6px; font-size: 12px; }
   </div>
 </div>
 
-<!-- TABS -->
 <div class="tabs-wrapper">
   <div class="tabs">
     <button class="tab active" data-tab="summary">
       <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-      Tab1
+      The Connected Enterprise
     </button>
     <button class="tab" data-tab="transactions">
       <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      Tab2
+      Interactive Demos
     </button>
     <button class="tab" data-tab="chequebook">
       <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
-      Tab3
-    </button>
-    <button class="tab" data-tab="related">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-      Tab4
-    </button>
-    <button class="tab" data-tab="account">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Tab5
-    </button>
-    <button class="tab" data-tab="more">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
-      Tab6
+      General Interactive Demos
     </button>
   </div>
 </div>
-
-<!-- CONTENT -->
+<div class="content-scroll">
 <div class="content">
-
-  <!-- ── TAB 1 ── -->
+  <!-- Connected Enterprise -->
   <div class="tab-panel active" id="tab-summary">
-    <p class="section-desc">A high-level overview of your infrastructure portfolio and key metrics.</p>
     <div class="cards-grid" id="grid-summary"></div>
   </div>
-
-  <!-- ── TAB 2 ── -->
+  <!-- Interactive Demos -->
   <div class="tab-panel" id="tab-transactions">
-    <p class="section-desc">Track all recent service usage, billing activity, and platform transactions.</p>
     <div class="cards-grid" id="grid-transactions"></div>
   </div>
-
-  <!-- ── TAB 3 ── -->
+  <!-- General Interactive Demos -->
   <div class="tab-panel" id="tab-chequebook">
-    <p class="section-desc">Manage and issue digital cheques for infrastructure payments and vendor settlements.</p>
+    <div class="offline-banner" id="offlineBanner">
+      <i class="ti ti-alert-triangle"></i>
+      <span>Launcher server is not running. <a onclick="window.open('start-launcher.bat')">Double-click start-launcher.bat</a> in the same folder, then <a onclick="checkServer()">retry</a>.</span>
+    </div>
     <div class="cards-grid" id="grid-chequebook"></div>
   </div>
-
-  <!-- ── TAB 4 ── -->
-  <div class="tab-panel" id="tab-related">
-    <p class="section-desc">Explore our comprehensive suite of digital solutions designed specifically for infrastructure.</p>
-    <div class="cards-grid" id="grid-related"></div>
-  </div>
-
-  <!-- ── TAB 5 ── -->
-  <div class="tab-panel" id="tab-account">
-    <p class="section-desc">View and manage your account details, usage, and subscription information.</p>
-    <div class="cards-grid" id="grid-account"></div>
-  </div>
-
-  <!-- ── TAB 6 ── -->
-  <div class="tab-panel" id="tab-more">
-    <p class="section-desc">Explore additional tools, settings, and resources for your infrastructure platform.</p>
-    <div class="cards-grid" id="grid-more"></div>
-  </div>
-
+</div>
 </div>
 
 <footer>
-  <span class="dot">●</span> <strong>Powered by Innovation</strong>
+  <span class="dot"></span> <strong>Powered by Innovation</strong>
   <small>Delivering excellence across industries worldwide</small>
 </footer>
 
-
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDESHOW MODAL
-═══════════════════════════════════════════════════════════ -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modal">
-
-    <!-- HEADER -->
+  <div class="modal">
     <div class="modal-header">
       <div class="mh-left">
         <div class="mh-icon"><i class="ti ti-layout-dashboard" id="mIcon"></i></div>
         <div>
-          <div class="mh-title" id="mTitle">Portfolio Health</div>
-          <div class="mh-sub"  id="mSub">Solution 01 · Life Sciences</div>
+          <div class="mh-title" id="mTitle">Dashboard</div>
+          <div class="mh-sub"  id="mSub">Automotive &amp; Tire</div>
         </div>
       </div>
-      <button class="close-btn" onclick="closeModal()" aria-label="Close"><i class="ti ti-x"></i></button>
+      <button class="close-btn" onclick="closeModal()"><i class="ti ti-x"></i></button>
     </div>
-
-    <!-- SLIDE AREA -->
-    <div class="slide-area" id="slideArea">
-      <button class="arrow-btn arrow-left"  id="arrowPrev" onclick="changeSlide(-1)" disabled aria-label="Previous"><i class="ti ti-chevron-left"></i></button>
-      <button class="arrow-btn arrow-right" id="arrowNext" onclick="changeSlide(1)"  aria-label="Next"><i class="ti ti-chevron-right"></i></button>
-    </div>
-
-    <!-- THUMB STRIP -->
+    <div id="modalContent"></div>
     <div class="thumb-strip" id="thumbStrip"></div>
-
-    <!-- DOT NAV -->
-    <div class="slide-nav">
-      <button class="nav-btn" id="btnPrev" onclick="changeSlide(-1)" disabled aria-label="Previous"><i class="ti ti-chevron-left"></i></button>
+    <div class="slide-nav" id="slideNav">
+      <button class="nav-btn" id="btnPrev" onclick="changeSlide(-1)" disabled><i class="ti ti-chevron-left"></i></button>
       <div class="dots" id="dotsEl"></div>
-      <button class="nav-btn" id="btnNext" onclick="changeSlide(1)" aria-label="Next"><i class="ti ti-chevron-right"></i></button>
+      <button class="nav-btn" id="btnNext" onclick="changeSlide(1)"><i class="ti ti-chevron-right"></i></button>
     </div>
-
-    <!-- MODAL FOOTER -->
     <div class="modal-footer">
       <div class="mf-live"><div class="live-dot"></div> Live Data</div>
     </div>
-
   </div>
 </div>
 
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="ti ti-info-circle" id="toastIcon"></i><span id="toastMsg"></span></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SCRIPT
-═══════════════════════════════════════════════════════════ -->
 <script>
-/* ─────────────────────────────────────────────────────────
-   CARD DATA  –  each tab has 6 cards; each card has 6 slides
-   Images: Unsplash high-res (1600×900, w=1600&h=900&fit=crop)
-───────────────────────────────────────────────────────────*/
+/* ═══════════════════════════════════════════════════════════
+   LAUNCHER SERVER CONFIG
+   Port must match launcher-server.js
+═══════════════════════════════════════════════════════════ */
+const LAUNCHER_PORT = 9988;
+const LAUNCHER_URL  = `http://127.0.0.1:${LAUNCHER_PORT}`;
+let   serverOnline  = false;
+
+/* ── Check if launcher server is running ── */
+async function checkServer() {
+  const el   = document.getElementById('serverStatus');
+  const txt  = document.getElementById('serverStatusText');
+  const banner = document.getElementById('offlineBanner');
+  el.className = 'server-status checking';
+  txt.textContent = 'Checking…';
+  try {
+    const r = await fetch(`${LAUNCHER_URL}/ping`, { signal: AbortSignal.timeout(2000) });
+    const j = await r.json();
+    if (j.ok) {
+      serverOnline = true;
+      el.className = 'server-status online';
+      txt.textContent = 'Launcher Ready';
+      banner.classList.remove('show');
+    } else { throw new Error('not ok'); }
+  } catch {
+    serverOnline = false;
+    el.className = 'server-status offline';
+    txt.textContent = 'Launcher Offline';
+  }
+}
+checkServer();
+setInterval(checkServer, 15000); // re-check every 15 s
+
+/* ── Open any file via the launcher server ── */
+async function launchFile(filePath, cardTitle) {
+  if (!serverOnline) {
+    document.getElementById('offlineBanner').classList.add('show');
+    showToast('Start start-launcher.bat first, then retry.', 'error');
+    return;
+  }
+  showToast(`Opening ${cardTitle}…`, 'info');
+  try {
+    const enc = encodeURIComponent(filePath);
+    const res = await fetch(`${LAUNCHER_URL}/launch?path=${enc}`);
+    const j   = await res.json();
+    if (j.ok) {
+      showToast(`${cardTitle} launched!`, 'success');
+    } else {
+      showToast(`Error: ${j.error}`, 'error');
+    }
+  } catch (e) {
+    showToast('Could not reach launcher server.', 'error');
+    serverOnline = false;
+    checkServer();
+  }
+}
+
+/* ── Toast ── */
+let toastTimer = null;
+function showToast(msg, type = 'info') {
+  const icons = { success:'ti-circle-check', info:'ti-info-circle', warn:'ti-alert-triangle', error:'ti-circle-x' };
+  document.getElementById('toastMsg').textContent  = msg;
+  document.getElementById('toastIcon').className   = `ti ${icons[type] || icons.info}`;
+  const el = document.getElementById('toast');
+  el.className = `toast ${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3500);
+}
+
+/* ── File extension helpers ── */
+function getExt(p) { if (!p) return ''; const parts = p.split('.'); return parts.length > 1 ? parts.pop().toLowerCase() : ''; }
+function getFileName(p) { return p ? p.split(/[\\/]/).pop() : ''; }
+function getFileBadge(filePath) {
+  if (!filePath) return '';
+  const ext = getExt(filePath);
+  const map = {
+    html:{ cls:'html', label:'HTML', icon:'ti-world' }, htm:{ cls:'html', label:'HTML', icon:'ti-world' },
+    exe: { cls:'exe',  label:'EXE',  icon:'ti-player-play' },
+    msi: { cls:'exe',  label:'MSI',  icon:'ti-package' },
+    ppt: { cls:'ppt',  label:'PPT',  icon:'ti-presentation' },
+    pptx:{ cls:'ppt',  label:'PPTX', icon:'ti-presentation' },
+    bat: { cls:'bat',  label:'BAT',  icon:'ti-terminal' },
+    cmd: { cls:'bat',  label:'CMD',  icon:'ti-terminal' },
+    ps1: { cls:'bat',  label:'PS1',  icon:'ti-terminal-2' },
+    pdf: { cls:'pdf',  label:'PDF',  icon:'ti-file-type-pdf' },
+    mp4: { cls:'other',label:'MP4',  icon:'ti-video' },
+  };
+  const i = map[ext] || { cls:'other', label: ext.toUpperCase() || 'FILE', icon:'ti-file' };
+  return `<span class="file-type-badge ${i.cls}"><i class="ti ${i.icon}"></i>${i.label}</span>`;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CARD DATA
+═══════════════════════════════════════════════════════════ */
 const TABS = {
   summary: {
-    desc: 'A high-level overview of your infrastructure portfolio and key metrics.',
     cards: [
-      {
-        title: 'Portfolio Health',  num: '01', desc: 'Real-time health scores across all infrastructure modules and deployments.',
-        btnLabel: 'View Dashboard', status: 'Live Data', live: true,
-        icon: '<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>',
-        mIcon: 'ti-chart-bar',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-        ]
-      },
-      {
-        title: 'Performance Metrics', num: '02', desc: 'Track KPIs, SLAs and performance benchmarks across your deployments.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/>',
-        mIcon: 'ti-trending-up',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-        ]
-      },
-      {
-        title: 'Compliance Status', num: '03', desc: 'Monitor regulatory compliance and certification status in real-time.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-shield-check',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-        ]
-      },
-      {
-        title: 'Supply Chain View', num: '04', desc: 'End-to-end supply chain visibility with predictive alerts.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-truck',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'R&D Pipeline', num: '05', desc: 'Drug pipeline progress, trial milestones and phase transition tracking.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-dna',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Quality Management', num: '06', desc: 'CAPA tracking, deviation reports and QMS dashboard.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-clipboard-check',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      }
-    ]
-  },
-  transactions: {
-    desc: 'Track all recent service usage, billing activity, and platform transactions.',
-    cards: [
-      {
-        title: 'Transaction Monitor', num: '01', desc: 'Live feed of all financial and operational transactions.',
-        btnLabel: 'View Dashboard', status: 'Live Data', live: true,
-        icon: '<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>',
-        mIcon: 'ti-receipt',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Billing Analytics', num: '02', desc: 'Invoice status, revenue recognition and billing cycle analytics.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/>',
-        mIcon: 'ti-file-invoice',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Payment Gateway', num: '03', desc: 'Multi-channel payment processing and gateway health monitoring.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-credit-card',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Revenue Breakdown', num: '04', desc: 'Segment, geography and product-level revenue analysis.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-chart-pie',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Accounts Payable', num: '05', desc: 'Vendor payment scheduling, aging and early payment discounts.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-building-bank',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Cost Allocation', num: '06', desc: 'Department-level cost centres, variance and budget tracking.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-calculator',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      }
-    ]
-  },
-  chequebook: {
-    desc: 'Manage and issue digital cheques for infrastructure payments and vendor settlements.',
-    cards: [
-      {
-        title: 'Digital Cheque Issuance', num: '01', desc: 'Issue, track and manage digital cheques in real-time.',
-        btnLabel: 'View Dashboard', status: 'Live Data', live: true,
-        icon: '<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>',
-        mIcon: 'ti-file-check',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Vendor Settlements', num: '02', desc: 'Automated vendor payment scheduling and settlement tracking.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/>',
-        mIcon: 'ti-users',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Treasury Overview', num: '03', desc: 'Cash position, liquidity management and short-term investing.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-coin',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Expense Management', num: '04', desc: 'Employee expenses, approvals, policy compliance and reporting.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-report-money',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Payroll Processing', num: '05', desc: 'Multi-jurisdiction payroll, tax filing and workforce cost analytics.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-user-dollar',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Budget Planning', num: '06', desc: 'Annual budgeting, rolling forecasts and scenario planning tools.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-calendar-stats',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      }
-    ]
-  },
-  related: {
-    desc: 'Explore our comprehensive suite of digital solutions designed specifically for infrastructure.',
-    cards: [
-      {
-        title: 'Project Management', num: '01', desc: 'Timeline and budget tracking for large-scale infrastructure projects.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>',
-        mIcon: 'ti-clipboard-list',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'BIM Integration', num: '02', desc: '3D model collaboration and clash detection for engineering teams.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>',
-        mIcon: 'ti-box-model',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Equipment Tracking', num: '03', desc: 'Asset location, utilisation and maintenance scheduling.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
-        mIcon: 'ti-tool',
+      { title:'Automotive Capabilities', num:'01', desc:'Real-time health scores across all infrastructure modules.', btnLabel:'View Dashboard', status:'Live Data', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-chart-bar',
         slides:[
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide5_152619a2-079f-44a5-ae13-febee55c7b69.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide2_5d73fbce-d225-42fd-9567-5f7574a10c03.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Automotive_EV_and_Battery_Executive_Selling_Deck_-_L100_90c8558f-1e8e-430f-9003-6c044f7017eb.png',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide4_3a681b2f-3879-4c7d-8ac0-357f049814c0.jpg',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide6_eb111741-6c2e-4c2c-a8c8-562c9b1d2fb9.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide7_b416f95e-2c4d-4e1d-b1dd-a15a21fc0998.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide8_0f687ffc-7e45-436d-a15a-e048b5d570c1.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide9_80c10791-0099-4176-ba0d-078c54ce035f.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide10_f618f355-3ef5-4df3-b255-b5503bae9774.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide11_cccf8c10-34f9-42f9-836c-0f9e309041a8.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide12_a2583065-50bf-4f33-8a4d-9ba9bab16fe7.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide13_a03cd624-b166-4937-b9a6-e83ad0f1949d.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide14_34dc20c9-95be-4fb6-b8d8-84ca1d134d2d.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide15_066ea87a-5b7d-4ccc-85c6-934cec59f070.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/05_Auto_ACE_CAP_d1528256-2c2a-49c9-831b-d92171b468de.jpg',title:''}
+        ]
       },
-      {
-        title: 'Quality Inspections', num: '04', desc: 'Mobile site audit tools and digital inspection checklists.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
-        mIcon: 'ti-zoom-check',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
+      { title:'Tire Capabilities', num:'02', desc:'Monitor regulatory compliance and certification status in real-time.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-shield-check',
+        slides:[
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide2_535a8537-9f2f-4ad2-942f-9f14f1b13872.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide3_721acf87-a34b-4b8a-96b8-79a83250ff4b.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Life_Sciences_Executive_Selling_Deck_-_L100_16d5a396-9511-4ef6-9d86-0144923e8edf.png',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide6_a22711de-ce95-46a9-8a32-2c6e57b1cb66.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide7_419467ac-fc57-469f-b237-7efdebb03e4a.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide8_7715ef6d-0980-4298-8461-4cbdd53b25ad.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide9_42f9f30c-93ee-453d-9931-b68e00285569.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide10_612b62f8-6f07-4af4-b65f-e6af29617beb.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide11_42b89ab1-3129-488d-a618-33570ce39699.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide12_7eff255e-de32-43d6-b654-58cb092c0723.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide13_962bb752-249b-45f6-a1cd-6442ca989837.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide12_a1c97caf-0410-4b63-9122-b3ef6df80c66.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide15_3c710bdc-2473-4cbe-a1a7-d56a6f96e679.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide16_8e99adab-5d99-41c1-b441-7f0acc9e69b8.JPG',title:''}
+        ]
       },
-      {
-        title: 'Workforce Planning', num: '05', desc: 'Labour allocation, shift planning and skills gap analysis.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-        mIcon: 'ti-users-group',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
+      { title:'Cyber Security', num:'03', desc:'Track KPIs, SLAs and performance benchmarks across your deployments.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-trending-up',
+        slides:[
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide1_197f72ee-4648-413e-8bb1-60ca68309782.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide1_ad62dccb-14eb-48d4-b8ed-046a56619b6c.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide2_f7bbbff2-128f-4d9f-9846-bbd964f9a112.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide3_3e0d57cd-b1ab-41b0-b83e-8b96bf7e7ebf.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide4_6eeb79bf-ba4f-4f76-8239-6fc31a6e024e.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide5_0cb783f6-d451-45b4-9b2d-2f852f58ba3e.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide6_3745ffac-3d75-4566-8a33-2ea72b1c4975.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide7_8b2a8eae-d882-4517-9600-51cb8a50fe2f.PNG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide8_5f251b3a-36ab-42ac-8a40-6551c4886aed.PNG',title:''}
+        ]
       },
-      {
-        title: 'Material Management', num: '06', desc: 'Supply chain optimisation and raw material inventory control.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
-        mIcon: 'ti-packages',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      }
+      { title:'Migration', num:'04', desc:'Monitor regulatory compliance and certification status in real-time.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-shield-check',
+        slides:[
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide1_72229644-224f-471b-b8d7-17ad1dcdddc2.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide2_39e5eddf-5d67-44af-98f6-d9ef001c8862.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide3_d0bcb8b1-ce08-42dc-938a-cd978b8a4138.JPG',title:''},
+          {src:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Images/Slide4_c3192b2a-727b-4542-8305-703df2f98e95.JPG',title:''}
+        ]
+      },
+       { title:'SDA', num:'05', desc:'End-to-end supply chain visibility with predictive alerts.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-truck', video:'C:/Users/MSharma14/Downloads/Software-defined Automation Feature Video.MP4' },
+      { title:'ThinManager', num:'06', desc:'End-to-end supply chain visibility with predictive alerts.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-truck', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Thin_Manager_3e1359f3-d64d-48e5-8943-adaff5c49898.MP4' },
+      { title:'Stratix 5950 Security', num:'07', desc:'Drug pipeline progress, trial milestones and phase transition tracking.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-dna', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Stratix_5950_6d3a6846-1977-455a-a698-3099f7f02f87.MP4' },
+      { title:'Stratix 4300', num:'08', desc:'CAPA tracking, deviation reports and QMS dashboard.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Stratix_4300_eda8625a-01c0-40a7-8e92-08e3c12831ac.MP4' },
+      { title:'Proactive CyberSecurity', num:'09', desc:'Proactive cybersecurity dashboard and threat management.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Cybersecurity_f0ecab6c-710f-4a9b-a9ab-abfbe585039e.mp4' },
+      { title:'Modern Factory', num:'10', desc:'Modern factory floor automation and digital twin visualization.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Modern_Factory_8a0ab752-0cd1-45ce-b7f4-f4f43a555636.MP4' },
+      { title:'MagneMotion', num:'11', desc:'Intelligent transport and motion control solutions.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_MagneMotion_8e9c509c-fefe-4c62-b1a4-409694921370.MP4' },
+      { title:'LogixAI', num:'12', desc:'AI-powered Logix controller and predictive control.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_LogixAI_69e22f29-33ed-408b-8241-058f67620729.MP4' },
+      { title:'Intelligent Package Power', num:'13', desc:'Smart power distribution and package management.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_IPP_732e45c4-22eb-48fa-b8ac-5f02f99936a4.MP4' },
+      { title:'Infrastructure as a Service', num:'14', desc:'Cloud-managed infrastructure and remote monitoring.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Infrastructure-as-a-Service_49417222-4e24-4412-935f-8be47485d902.MP4' },
+      { title:'Industrial Security-TM', num:'15', desc:'Industrial-grade security and ThinManager integration.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Industrial_Security_TM_a2e9a190-5440-4d48-b761-d3e1c7821031.mp4' },
+      { title:'GuardianAI', num:'16', desc:'AI-driven predictive maintenance and downtime prevention.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/Harness_the_Power_of_AI_and_Stay_Ahead_of_Unplanned_Downtime_Video_d4e28e85-d6b6-42dd-9807-b7732c8321f7.MP4' },
+      { title:'Fiix', num:'17', desc:'CMMS and maintenance scheduling platform.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Fiix_5dbd7428-4e22-4381-9da6-5cda91f96388.MP4' },
+      { title:'FactoryTalk Security', num:'18', desc:'FactoryTalk identity and access management.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_FactoryTalk_Security_dc29c687-f19c-4bee-8071-9b70b13b184e.mp4' },
+      { title:'CUBIC', num:'19', desc:'Modular system design and cubic automation.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/Cubic_Modulsystem_2022_161eb6c6-ee9d-462a-bc67-0c07a595c436.mp4' },
+      { title:'CIP Security', num:'20', desc:'CIP Security protocol and network protection.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/Understanding_CIP_Security_Video_fbfcd55a-0065-4e18-9377-c6c3696f440f.MP4' },
+      { title:'CIP Safety', num:'21', desc:'Functional safety over EtherNet/IP with CIP Safety.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CIP_Safety_0f4b7049-eef4-4d20-928d-9abb0216acf7.mp4' },
+      { title:'Analytic & IIOT - FTIS', num:'22', desc:'IIoT analytics and FactoryTalk IntelliHub integration.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-clipboard-check', video:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/tis/rock/ams_sync_29/UploadedResources/Videos/CPG_ACE_Analytic_and_IIOT_FTIS_2603dd14-9421-4e6d-97b9-271a7ddeb1f2.mp4' }
     ]
   },
-  account: {
-    desc: 'View and manage your account details, usage, and subscription information.',
+
+  transactions: {
     cards: [
-      {
-        title: 'Account Overview', num: '01', desc: 'Real-time health scores across all infrastructure modules and deployments.',
-        btnLabel: 'View Dashboard', status: 'Live Data', live: true,
-        icon: '<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>',
-        mIcon: 'ti-user-circle',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'User Management', num: '02', desc: 'Track KPIs, SLAs and performance benchmarks across your deployments.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/>',
-        mIcon: 'ti-user-cog',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Security Centre', num: '03', desc: 'Monitor regulatory compliance and certification status in real-time.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-lock',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Billing History', num: '04', desc: 'Monitor regulatory compliance and certification status in real-time.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-history',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Notification Settings', num: '05', desc: 'Monitor regulatory compliance and certification status in real-time.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-bell-cog',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Integrations Hub', num: '06', desc: 'Monitor regulatory compliance and certification status in real-time.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-plug-connected',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      }
+      { title:'AF25 Automotive & Tire - EV Kiosk', num:'01', desc:'Live feed of all financial and operational transactions.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>', mIcon:'ti-receipt', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/AF25 Automotive and Tire - EV Kiosk Interactive/auto-ev kiosk interactive/auto-ev/index-auto-ev.html' },
+      { title:'AF25 Automotive & Tire - Tier Supplier Kiosk', num:'02', desc:'Invoice status, revenue recognition and billing cycle analytics.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/>', mIcon:'ti-file-invoice',file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/AF25 Automotive and Tire - Tier Supplier Kiosk Interactive/supplier/index-supplier.html' },
+      { title:'AF25 Automotive & Tire - Tier Kiosk', num:'03', desc:'Multi-channel payment processing and gateway health monitoring.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-credit-card', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/AF25 Automotive and Tire - Tire Kiosk Interactive/tire/index-tire.html'},
+      { title:'Auto & Tire Battery', num:'04', desc:'Segment, geography and product-level revenue analysis.', btnLabel:'View Demo', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-chart-pie',file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Auto & Tire Battery Interactive/RA Battery Release_FINAL/RA Battery Release/AF 2024 Battery.exe' }
     ]
   },
-  more: {
-    desc: 'Explore additional tools, settings, and resources for your infrastructure platform.',
+
+  /* ══════════════════════════════════════════════════════
+     GENERAL INTERACTIVE DEMOS
+     Set `file` to ANY path — .exe, .ppt, .pptx, .html,
+     .bat, .pdf, etc. The launcher server opens it natively.
+  ══════════════════════════════════════════════════════ */
+  chequebook: {
     cards: [
-      {
-        title: 'Analytics Studio', num: '01', desc: 'Self-service analytics and custom dashboard builder.',
-        btnLabel: 'View Dashboard', status: 'Live Data', live: true,
-        icon: '<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>',
-        mIcon: 'ti-chart-dots',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Document Vault', num: '02', desc: 'Secure document storage, version control and e-signature workflows.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/>',
-        mIcon: 'ti-archive',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Training Centre', num: '03', desc: 'GxP training management, completion tracking and certification.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-school',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Audit Management', num: '04', desc: 'Plan, execute and track internal and external audit programmes.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-search',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Innovation Lab', num: '05', desc: 'Digital twin, AI pilots and emerging-tech proof-of-concepts.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-flask',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      },
-      {
-        title: 'Sustainability Dashboard', num: '06', desc: 'Carbon footprint, ESG reporting and energy consumption analytics.',
-        btnLabel: 'View Demo', status: 'Available Now', live: false,
-        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-        mIcon: 'ti-leaf',
-        slides: [
-          { src:'C:/Users/vaibh/OneDrive/Pictures/1.jpg', title:'Portfolio Overview',   },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/2.jpg', title:'Module Status Board',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/3.jpg', title:'Uptime Trends',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/4.jpg', title:'Risk Heatmap', },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/5.jpg', title:'Incident Response Log',  },
-          { src:'C:/Users/vaibh/OneDrive/Pictures/6.jpg', title:'Executive Summary',  }
-      ]
-      }
+      { title:'AF23 CyberSecurity Game',                    num:'01', desc:'Interactive cybersecurity training game.',                         btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-file-check',      file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/AF23 Cybersecurity Game/Rockwell Automation ICID.exe' },
+      { title:'Asset Optimization',                         num:'02', desc:'Automated vendor payment scheduling and settlement tracking.',     btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-users',           file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Asset Optimization Interactive Display/kiosk/index.html' },
+      { title:'IntelliCENTER Interactive',                  num:'03', desc:'Cash position, liquidity management and short-term investing.',    btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-coin',            file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/IntelliCENTER Interactive Demo V2/Intellicenter_2019/index.html' },
+      { title:'Interactive Display',                        num:'04', desc:'Employee expenses, approvals, policy compliance and reporting.',   btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-report-money',    file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Interactive Display/IA_Wall_2019/index.html' },
+      { title:'Machine Safety',                             num:'05', desc:'Multi-jurisdiction payroll, tax filing and workforce cost analytics.', btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-user-dollar',    file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Machine Safety Interactive/kiosk (1)/kiosk/index.html' },
+      { title:'Milwaukee Operations Line',                  num:'06', desc:'Annual budgeting, rolling forecasts and scenario planning tools.', btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Milwaukee Operations Line Interactive Demo/MKE_Ops_Release_1/MilwaukeeOperations_Release1/MKE Ops HDRP Development.exe' },
+      { title:'Onshore Digital Well Pad',                   num:'07', desc:'Digital well pad operations and field management.',               btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Onshore Digital Well-pad Interactive Demo/rockwell-onshore-offline/rockwell-onshore.exe' },
+      { title:'OTTO Build PIA',                             num:'08', desc:'OTTO autonomous mobile robot and PIA configuration.',             btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/OTTO Build P1a Release/OTTO Build P1a Release/OTTO by Rockwell Automation - Digital lnteractive Factory.exe' },
+      { title:'PlantPAx Interactive',                       num:'09', desc:'Process automation and PlantPAx DCS configuration.',              btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/PlantPAx Interactive/rockwell-automation-plantpax-offline/index.html' },
+      { title:'Plex Digital Interactive',                   num:'10', desc:'Smart Manufacturing Platform and MES integration.',               btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Plex Digital Interactive/plex-interactive 1.0.0.exe' },
+      { title:'Rapid Launch Interactive',                   num:'11', desc:'Rapid launch configuration and project kickoff tool.',            btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/RapidLaunch Interactive/rockwellautomation-rapidlaunch-automotive-solution-offline-exe/rapidlaunch.exe' },
+      { title:'Rockwell System - Interactive Safety & Security', num:'12', desc:'Integrated safety and security system overview.',            btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Rockwell Systems - Interactive Safety and Security Demo V4/RockwellSystems.exe' },
+      { title:'Services Network',                           num:'13', desc:'Global services network and remote support connectivity.',        btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/ServicesNetwork-master/ServicesNetwork-master/index.html' },
+      { title:'Sustainability Globe',                       num:'14', desc:'Global sustainability metrics and energy management.',            btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Sustainability Globe Release/RA Globe Interactive 2023.exe' },
+      { title:'We Make Industry Interactive',               num:'15', desc:'Rockwell Automation industry experience interactive.',            btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/We Make Industry Interactive/WeMake_CE_Interactive/index.html' },
+      { title:'Carbon Capture & Storage',                   num:'16', desc:'Carbon capture, storage and emissions reduction tools.',          btnLabel:'Launch', status:'Available Now', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', mIcon:'ti-calendar-stats', file:'C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/interactive demo/Carbon Capture and Storage Interactive.pptx' }
     ]
   }
 };
 
-/* ─────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════
    RENDER CARDS
-───────────────────────────────────────────────────────────*/
+═══════════════════════════════════════════════════════════ */
 function buildCard(card, tabKey, idx) {
+  const isFile = (tabKey === 'chequebook' || tabKey === 'transactions') ;
   const c = document.createElement('div');
   c.className = 'card';
   c.innerHTML = `
@@ -1033,147 +504,130 @@ function buildCard(card, tabKey, idx) {
       <span class="card-title">${card.title}</span>
       <span class="card-num">${card.num}</span>
     </div>
+    ${isFile ? `<div style="margin-bottom:2px">${getFileBadge(card.file)}</div>` : ''}
     <p class="card-desc">${card.desc}</p>
     <button class="demo-btn">
       <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       ${card.btnLabel}
     </button>
-    <div class="card-status"><span class="status-dot"></span>${card.status}</div>
-  `;
-  c.addEventListener('click', () => openModal(tabKey, idx));
+    <div class="card-status"><span class="status-dot"></span>${card.status}</div>`;
+  c.addEventListener('click', () => isFile ? launchFile(card.file, card.title) : openModal(tabKey, idx));
   return c;
 }
 
 Object.keys(TABS).forEach(tabKey => {
   const grid = document.getElementById('grid-' + tabKey);
-  TABS[tabKey].cards.forEach((card, i) => grid.appendChild(buildCard(card, tabKey, i)));
+  if (grid) TABS[tabKey].cards.forEach((card, i) => grid.appendChild(buildCard(card, tabKey, i)));
 });
 
-/* ─────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════
    TAB SWITCHING
-───────────────────────────────────────────────────────────*/
-const tabs   = document.querySelectorAll('.tab');
-const panels = document.querySelectorAll('.tab-panel');
-
-tabs.forEach(tab => {
+═══════════════════════════════════════════════════════════ */
+document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    panels.forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
   });
 });
 
-/* ─────────────────────────────────────────────────────────
-   SLIDESHOW MODAL
-───────────────────────────────────────────────────────────*/
-let curSlide = 0;
-let currentSlides = [];
+/* ═══════════════════════════════════════════════════════════
+   MODAL (slides + video) — summary & transactions tabs only
+═══════════════════════════════════════════════════════════ */
+let curSlide = 0, currentSlides = [], modalMode = 'slides';
 
 function openModal(tabKey, cardIdx) {
   const card = TABS[tabKey].cards[cardIdx];
-  currentSlides = card.slides;
-  curSlide = 0;
-
-  // Update header
+  const useVideo = !!card.video;
   document.getElementById('mTitle').textContent = card.title;
-  document.getElementById('mSub').textContent   = `Solution ${card.num} · Life Sciences`;
+  document.getElementById('mSub').textContent   = `Solution ${card.num} · Automotive & Tire`;
   document.getElementById('mIcon').className    = `ti ${card.mIcon}`;
-
-  // Clear & rebuild slides
-  const slideArea  = document.getElementById('slideArea');
+  const contentEl  = document.getElementById('modalContent');
   const thumbStrip = document.getElementById('thumbStrip');
+  const slideNav   = document.getElementById('slideNav');
   const dotsEl     = document.getElementById('dotsEl');
+  contentEl.innerHTML = thumbStrip.innerHTML = dotsEl.innerHTML = '';
 
-  // Remove old slides (keep arrow buttons)
-  slideArea.querySelectorAll('.slide').forEach(s => s.remove());
-  thumbStrip.innerHTML = '';
-  dotsEl.innerHTML     = '';
-
-  currentSlides.forEach((s, i) => {
-    // slide
-    const el = document.createElement('div');
-    el.className = 'slide' + (i === 0 ? ' active' : '');
-    el.id = 'ms' + i;
-    el.innerHTML = `
-      <img src="${s.src}" alt="${s.title}" loading="${i === 0 ? 'eager' : 'lazy'}">
-      <div class="slide-caption"><h3>${s.title}</h3><p>${s.desc}</p></div>`;
-    slideArea.insertBefore(el, slideArea.querySelector('.arrow-btn'));
-
-    // thumb
-    const t = document.createElement('div');
-    t.className = 'thumb' + (i === 0 ? ' active' : '');
-    t.innerHTML = `<img src="${s.src}" alt="${s.title}" loading="lazy">`;
-    t.onclick = () => goTo(i);
-    thumbStrip.appendChild(t);
-
-    // dot
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Slide ' + (i + 1));
-    d.onclick = () => goTo(i);
-    dotsEl.appendChild(d);
-  });
-
-  updateNav();
+  if (useVideo) {
+    modalMode = 'video';
+    thumbStrip.style.display = slideNav.style.display = 'none';
+    const wrap = document.createElement('div');
+    wrap.className = 'modal-video-wrap'; wrap.id = 'videoWrap';
+    wrap.innerHTML = `<video id="modalVideoEl" controls autoplay><source src="${card.video}" type="video/mp4">Your browser does not support video.</video><button class="video-fullscreen-btn" onclick="toggleVideoFullscreen()"><i class="ti ti-arrows-maximize" id="videoFsIcon"></i></button>`;
+    contentEl.appendChild(wrap);
+  } else {
+    modalMode = 'slides';
+    thumbStrip.style.display = slideNav.style.display = '';
+    currentSlides = card.slides; curSlide = 0;
+    const slideArea = document.createElement('div');
+    slideArea.className = 'slide-area'; slideArea.id = 'slideArea';
+    slideArea.innerHTML = `<button class="arrow-btn arrow-left" id="arrowPrev" onclick="changeSlide(-1)" disabled><i class="ti ti-chevron-left"></i></button><button class="arrow-btn arrow-right" id="arrowNext" onclick="changeSlide(1)"><i class="ti ti-chevron-right"></i></button><button class="fullscreen-btn" onclick="toggleSlideFullscreen()"><i class="ti ti-arrows-maximize" id="slideFsIcon"></i></button>`;
+    currentSlides.forEach((s, i) => {
+      const el = document.createElement('div');
+      el.className = 'slide' + (i === 0 ? ' active' : ''); el.id = 'ms' + i;
+      el.innerHTML = `<img src="${s.src}" alt="${s.title}" loading="${i===0?'eager':'lazy'}">${s.title?`<div class="slide-caption"><h3>${s.title}</h3></div>`:''}`;
+      slideArea.insertBefore(el, slideArea.querySelector('.arrow-btn'));
+      const t = document.createElement('div'); t.className='thumb'+(i===0?' active':'');
+      t.innerHTML=`<img src="${s.src}" loading="lazy">`; t.onclick=()=>goTo(i); thumbStrip.appendChild(t);
+      const d = document.createElement('button'); d.className='dot'+(i===0?' active':'');
+      d.setAttribute('aria-label','Slide '+(i+1)); d.onclick=()=>goTo(i); dotsEl.appendChild(d);
+    });
+    contentEl.appendChild(slideArea);
+    let tx=0;
+    slideArea.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+    slideArea.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>50)changeSlide(dx<0?1:-1);});
+    updateNav();
+  }
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
+  const vid = document.getElementById('modalVideoEl'); if(vid) vid.pause();
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-// Close on overlay click (but not modal itself)
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
+document.getElementById('modalOverlay').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
 
 function updateNav() {
-  const total = currentSlides.length;
-  document.getElementById('btnPrev').disabled   = curSlide === 0;
-  document.getElementById('btnNext').disabled   = curSlide === total - 1;
-  document.getElementById('arrowPrev').disabled = curSlide === 0;
-  document.getElementById('arrowNext').disabled = curSlide === total - 1;
-  document.querySelectorAll('.thumb').forEach((t, i) => t.classList.toggle('active', i === curSlide));
-  document.querySelectorAll('.dot').forEach((d, i)   => d.classList.toggle('active', i === curSlide));
-  const thumbs = document.querySelectorAll('.thumb');
-  if (thumbs[curSlide]) thumbs[curSlide].scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+  const tot=currentSlides.length;
+  ['arrowPrev','btnPrev'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=curSlide===0;});
+  ['arrowNext','btnNext'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=curSlide===tot-1;});
+  document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===curSlide));
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===curSlide));
+  const thumbs=document.querySelectorAll('.thumb'); if(thumbs[curSlide]) thumbs[curSlide].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
 
-function goTo(n, dir) {
-  const slides = document.querySelectorAll('.slide');
+function goTo(n) {
+  const slides=document.querySelectorAll('.slide'); if(!slides[curSlide]||!slides[n]) return;
   slides[curSlide].classList.remove('active');
-  if (dir === 'left') {
-    slides[curSlide].classList.add('exit-left');
-    setTimeout(() => slides[curSlide] && slides[curSlide].classList.remove('exit-left'), 450);
+  if(n<curSlide){slides[curSlide].classList.add('exit-left'); setTimeout(()=>slides[curSlide]&&slides[curSlide].classList.remove('exit-left'),450);}
+  curSlide=n; slides[curSlide].classList.add('active'); updateNav();
+}
+function changeSlide(d){const n=curSlide+d; if(n>=0&&n<currentSlides.length) goTo(n);}
+
+function toggleSlideFullscreen(){
+  const area=document.getElementById('slideArea'); const icon=document.getElementById('slideFsIcon');
+  if(!document.fullscreenElement){area.requestFullscreen().catch(()=>{});if(icon)icon.className='ti ti-arrows-minimize';}
+  else{document.exitFullscreen();if(icon)icon.className='ti ti-arrows-maximize';}
+}
+function toggleVideoFullscreen(){
+  const wrap=document.getElementById('videoWrap'); const icon=document.getElementById('videoFsIcon');
+  if(!document.fullscreenElement){wrap.requestFullscreen().catch(()=>{});if(icon)icon.className='ti ti-arrows-minimize';}
+  else{document.exitFullscreen();if(icon)icon.className='ti ti-arrows-maximize';}
+}
+document.addEventListener('fullscreenchange',()=>{
+  if(!document.fullscreenElement){
+    const si=document.getElementById('slideFsIcon'); const vi=document.getElementById('videoFsIcon');
+    if(si)si.className='ti ti-arrows-maximize'; if(vi)vi.className='ti ti-arrows-maximize';
   }
-  curSlide = n;
-  slides[curSlide].classList.add('active');
-  updateNav();
-}
-
-function changeSlide(d) {
-  const next = curSlide + d;
-  if (next >= 0 && next < currentSlides.length) goTo(next, d === -1 ? 'left' : 'right');
-}
-
-// Keyboard
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('modalOverlay').classList.contains('open')) return;
-  if (e.key === 'ArrowRight') changeSlide(1);
-  if (e.key === 'ArrowLeft')  changeSlide(-1);
-  if (e.key === 'Escape')     closeModal();
 });
-
-// Touch / swipe
-const slideArea = document.getElementById('slideArea');
-let touchStartX = 0;
-slideArea.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-slideArea.addEventListener('touchend',   e => {
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  if (Math.abs(dx) > 50) changeSlide(dx < 0 ? 1 : -1);
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('modalOverlay').classList.contains('open')) return;
+  if(modalMode==='slides'){if(e.key==='ArrowRight')changeSlide(1); if(e.key==='ArrowLeft')changeSlide(-1); if(e.key==='f'||e.key==='F')toggleSlideFullscreen();}
+  if(e.key==='Escape'&&!document.fullscreenElement) closeModal();
 });
 </script>
 </body>

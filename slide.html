@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slideshow</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.active {
+  display: block;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  background: rgba(0,0,0,0.5);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.top-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="slideshow-container" id="slideshow">
+
+  <div class="slide active">
+    <img src="C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/Pictures/image.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/Pictures/Guardian AI.png">
+  </div>
+
+  <div class="slide">
+    <img src="C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/Pictures/image.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/Pictures/Guardian AI.png">
+  </div>
+
+  <div class="slide">
+    <img src="C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/Pictures/image.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/Pictures/Guardian AI.png">
+  </div>
+
+  <div class="slide">
+    <img src="C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/Pictures/image.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="C:/Users/MSharma14/OneDrive - Rockwell Automation, Inc/Pictures/Guardian AI.png">
+  </div>
+
+  <div class="nav prev" onclick="changeSlide(-1)">&#10094;</div>
+  <div class="nav next" onclick="changeSlide(1)">&#10095;</div>
+
+  <div class="top-buttons">
+    <button onclick="openFullscreen()">Full Screen</button>
+    <button onclick="exitSlideshow()">Exit</button>
+  </div>
+
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  currentSlide = (index + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+}
+
+function changeSlide(step) {
+  showSlide(currentSlide + step);
+}
+
+function openFullscreen() {
+  const elem = document.getElementById("slideshow");
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  }
+}
+
+function exitSlideshow() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    document.getElementById("slideshow").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
+
