@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Industry Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --red:#ee652a;
+    --dark:#0f1117;
+    --light:#f5f6f8;
+  }
+  html,body{height:100%;overflow:hidden;background:var(--dark);font-family:'DM Sans',sans-serif;}
+
+  .stage{
+    position:relative;
+    width:100%;
+    height:100vh;
+    cursor:pointer;
+    isolation:isolate;
+  }
+
+  /* ---- Slides (pure image, no text) ---- */
+  .slide{
+    position:absolute; inset:0;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    opacity:0;
+    transform:scale(1.1);
+    transition:opacity 1.5s ease;
+    z-index:1;
+  }
+  .slide.active{
+    opacity:1;
+    z-index:2;
+    animation:kenburns 6.6s ease-out forwards;
+  }
+  @keyframes kenburns{
+    from{ transform:scale(1.1); }
+    to{ transform:scale(1); }
+  }
+
+  /* soft vignette so the dots/hint stay legible on any photo */
+  .stage::before{
+    content:'';
+    position:absolute; inset:0; z-index:3; pointer-events:none;
+    background:linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 18%, transparent 72%, rgba(0,0,0,0.55) 100%);
+  }
+
+  /* ---- Progress dots / timer ---- */
+  .dots{
+    position:absolute; left:50%; bottom:74px; transform:translateX(-50%);
+    display:flex; gap:10px; z-index:4;
+  }
+  .dot{
+    width:34px; height:3px; border-radius:2px;
+    background:rgba(255,255,255,0.18);
+    overflow:hidden; position:relative;
+  }
+  .dot i{
+    position:absolute; inset:0; width:0%;
+    background:var(--red);
+    display:block;
+  }
+  .dot.filled i{ width:100%; transition:none; }
+  .dot.running i{ width:0%; animation:fill var(--dur) linear forwards; }
+  @keyframes fill{ from{width:0%;} to{width:100%;} }
+
+  /* ---- Enter hint ---- */
+  .hint{
+    position:absolute; left:50%; bottom:30px; transform:translateX(-50%);
+    z-index:4; font-size:11.5px; letter-spacing:2px; text-transform:uppercase;
+    color:#8b8f9c; display:flex; align-items:center; gap:8px;
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  .hint .ring{
+    width:8px; height:8px; border-radius:50%;
+    border:1px solid var(--red);
+  }
+  @keyframes pulse{ 0%,100%{opacity:.5;} 50%{opacity:1;} }
+
+  /* ---- Brand mark ---- */
+  .brand{
+    position:absolute; top:28px; left:32px; z-index:4;
+    font-size:12px; letter-spacing:2px; color:#8b8f9c; font-weight:500;
+  }
+  .brand span{ color:var(--red); }
+
+  /* ---- Exit transition into index.html ---- */
+  .curtain{
+    position:fixed; inset:0; z-index:50;
+    background:radial-gradient(circle at var(--cx,50%) var(--cy,50%), #fff 0%, var(--red) 40%, var(--dark) 100%);
+    clip-path:circle(0% at var(--cx,50%) var(--cy,50%));
+    transition:clip-path .75s cubic-bezier(.7,0,.3,1);
+    pointer-events:none;
+  }
+  .stage.leaving .curtain{ clip-path:circle(150% at var(--cx,50%) var(--cy,50%)); }
+  .stage.leaving .slide.active{ transition:opacity .6s ease; opacity:.15; }
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="brand">INDUSTRY <span>SOLUTIONS</span></div>
+
+  <div id="slides"></div>
+
+  <div class="dots" id="dots"></div> 
+  <div class="hint"><span class="ring"></span> Tap anywhere to enter</div>
+
+  <div class="curtain" id="curtain"></div>
+</div>
+
+<script>
+  // Put your own .jpg files in an "images" folder next to this file
+  // and list their filenames here, in the order they should play.
+  const images = [
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-1.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-2.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-3.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-4.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-5.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-6.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-7.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-8.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-9.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-10.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-11.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-12.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-13.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-14.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-15.jpg',
+    'C:/Users/MSharma14/Downloads/industry-solutions-app/industry-app/images/slide-16.jpg',
+  ];
+
+  const slidesEl = document.getElementById('slides');
+  const dotsEl = document.getElementById('dots');
+  const INTERVAL = 4200; // ms per slide
+
+  images.forEach((src) => {
+    const s = document.createElement('div');
+    s.className = 'slide';
+    s.style.backgroundImage = `url("${src}")`;
+    slidesEl.appendChild(s);
+
+    const d = document.createElement('div');
+    d.className = 'dot';
+    d.innerHTML = '<i></i>';
+    dotsEl.appendChild(d);
+  });
+
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let idx = 0;
+  let timer = null;
+
+  function show(n){
+    slides.forEach((s,i)=> s.classList.toggle('active', i===n));
+    dots.forEach((d,i)=>{
+      d.classList.remove('running');
+      d.style.removeProperty('--dur');
+      if(i < n){ d.classList.add('filled'); d.classList.remove('running'); }
+      else if(i === n){
+        d.classList.remove('filled');
+        void d.offsetWidth; // restart animation
+        d.style.setProperty('--dur', INTERVAL+'ms');
+        d.classList.add('running');
+      } else {
+        d.classList.remove('filled');
+      }
+    });
+  }
+
+  function next(){
+    idx = (idx+1) % slides.length;
+    show(idx);
+  }
+
+  show(0);
+  timer = setInterval(next, INTERVAL);
+
+  // click anywhere -> smooth transition into index.html
+  const stage = document.getElementById('stage');
+  stage.addEventListener('click', (e) => {
+    if(stage.classList.contains('leaving')) return;
+    clearInterval(timer);
+    const cx = (e.clientX / window.innerWidth * 100).toFixed(1) + '%';
+    const cy = (e.clientY / window.innerHeight * 100).toFixed(1) + '%';
+    stage.style.setProperty('--cx', cx);
+    stage.style.setProperty('--cy', cy);
+    stage.classList.add('leaving');
+    setTimeout(() => { window.location.href = 'index.html'; }, 780);
+  });
+</script>
+
+</body>
+</html>
